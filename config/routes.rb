@@ -11,6 +11,30 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     resources :titles
+    resources :artists
+    resources :cart_items
+    resources :delivery_addresses
+    resources :discs
+    resources :genres
+    resources :labels
+    resources :orders
+    resources :orders_items
+    resources :songs
+    resources :users
+  end
+
+  namespace :user do
+    resources :titles
+    resources :artists
+    resources :cart_items
+    resources :delivery_addresses
+    resources :discs
+    resources :genres
+    resources :labels
+    resources :orders
+    resources :orders_items
+    resources :songs
+    resources :users
   end
 
   resources :genres
