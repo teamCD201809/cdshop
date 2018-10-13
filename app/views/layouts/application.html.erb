@@ -10,6 +10,48 @@
   </head>
 
   <body>
+<!-- ここから廣重編集-->
+　<header>
+    <div class="header">
+        <%= form_tag titles_path, :method => 'get' do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag '検索', :title =>nil %>
+        <% end %>
+      <nav>
+        <ul>
+          <li>
+            
+
+
+        </li>
+          <li>ログイン</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+
+
+<div class="dropdown">
+  <a href="#" class="dropdown-toggle dropdown-text" data-toggle="dropdown">Drop Down <b class="caret"></b></a>
+  <ul class="dropdown-menu">
+    <li class="dropdown-item"><a href="#">menu</a></li>
+    <li class="dropdown-item"><a href="#">menu</a></li>
+    <li><a href="dropdown-item">menu</a></li>
+  </ul>
+</div>
+
+
+</div>
+
+
+
+
+
+<!--  ここまで廣重編集-->
+
     <%= yield %>
   </body>
 </html>
+
