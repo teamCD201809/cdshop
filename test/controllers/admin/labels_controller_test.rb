@@ -20,7 +20,7 @@ class Admin::LabelsControllerTest < ActionDispatch::IntegrationTest
       post labels_url, params: { label: { label: @label.label } }
     end
 
-    assert_redirected_to label_url(Label.last)
+    assert_redirected_to admin_label_path(assigns(:label))
   end
 
   test "should show label" do
@@ -35,7 +35,7 @@ class Admin::LabelsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update label" do
     patch label_url(@label), params: { label: { label: @label.label } }
-    assert_redirected_to label_url(@label)
+    assert_redirected_to admin_label_path(assigns(:label))
   end
 
   test "should destroy label" do
@@ -43,6 +43,6 @@ class Admin::LabelsControllerTest < ActionDispatch::IntegrationTest
       delete label_url(@label)
     end
 
-    assert_redirected_to labels_url
+    assert_redirected_to admin_labels_url
   end
 end

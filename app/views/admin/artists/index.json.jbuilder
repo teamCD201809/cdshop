@@ -1,1 +1,1 @@
-json.array! @artists, partial: 'artists/artist', as: :artist
+json.url admin_artist_url(artist, format: :json)
