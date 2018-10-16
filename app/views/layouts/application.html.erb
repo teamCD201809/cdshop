@@ -4,7 +4,7 @@
     <title>CDshop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+　　<%= javascript_include_tag 'application', 'data-turbolinks-track': ' reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,32 +13,49 @@
 <!-- ここから廣重編集-->
 　<header>
     <div class="header">
+      <div class="social">
+<i class="fa fa-spinner fa-4x" aria-hidden="true"></i>
+</div>
+      <div class="searchbox">
         <%= form_tag titles_path, :method => 'get' do %>
           <%= text_field_tag :search %>
           <%= submit_tag '検索', :title =>nil %>
         <% end %>
-      <nav>
+      </div>
+      <nav class="header-nav">
         <ul>
-          <li>
-            
+          <% if admin_signed_in? %>
+            <li class="header-list">管理者</li>
+            <span class="header-list">/</span>
+            <li class="header-list">一覧</li>
+            <span class="header-list">/</span>
+            <li class="header-list">新規登録</li>
+            <span class="header-list">/</span>
+            <li class="header-list">購入履歴</li>
 
+          <% elsif user_signed_in? %>
+            <li class="header-list">ユーザー名</li>
+            <span class="header-list">/</span>
+            <li class="header-list">ログアウト</li>
+           <% else %>
+            <li class="header-list">新規登録</li>
+            <span class="header-list">/</span>
+            <li class="header-list">ログイン</li>
+          <% end %>
 
-        </li>
-          <li>ログイン</li>
         </ul>
       </nav>
     </div>
   </header>
 
-
-
-
 <div class="dropdown">
   <a href="#" class="dropdown-toggle dropdown-text" data-toggle="dropdown">Drop Down <b class="caret"></b></a>
   <ul class="dropdown-menu">
-    <li class="dropdown-item"><a href="#">menu</a></li>
-    <li class="dropdown-item"><a href="#">menu</a></li>
-    <li><a href="dropdown-item">menu</a></li>
+    <li class="dropdown-item"><a href="#">レーベル</a></li>
+    <li class="dropdown-item"><a href="#">アーティスト</a></li>
+    <li><a href="dropdown-item"></a>ジャンル</li>
+    <li><a href="dropdown-item"></a>商品</li>
+    <li><a href="dropdown-item"></a>ユーザー</li>
   </ul>
 </div>
 
