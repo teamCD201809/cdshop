@@ -2,9 +2,9 @@
 
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
-    	<div class="col-lg-3" style="background-color: red">
+    	<div class="col-lg-2" style="background-color: red">
     	</div>
-        <div class="col-lg-3" style="background-color: lightblue">
+        <div class="col-lg-4" style="background-color: lightblue">
                 <p>
                     画像a;kflsdfj;dklsfa
                 </p>
@@ -26,26 +26,22 @@
         <div class="col-lg-2" style="background-color: orange">
             <div style="float:left">
                 <p>??枚</p>
-             <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                カートに入れる
-             </button>
+             <%= link_to "カートに追加", new_user_cart_item_path, class:"btn btn-primary"%>
         </div>
 
     	</div>
 
     	<div class="col-lg-2" style="background-color: blue">
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                カート詳細へ
-            </button>
+            <%= link_to "カート詳細へ", user_cart_items_path, class:"btn btn-primary"%>
     	</div>
     </div>
 </div>
 
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #CCCCCC">   <!-- ここを追加 -->
-        <div class="col-lg-3" style="background-color: red">
+        <div class="col-lg-2" style="background-color: red">
         </div>
-        <div class="col-lg-3" style="background-color: green">
+        <div class="col-lg-4" style="background-color: green">
             <h3>DISC1</h3>
             <p>試聴</p>
             <table>
@@ -70,7 +66,7 @@
             </table>
         </div>
 
-        <div class="col-lg-3" style="background-color: green">
+        <div class="col-lg-4" style="background-color: green">
             <h3>DISC2</h3>
             <p>試聴</p>
             <table>
@@ -87,10 +83,8 @@
             </table>
         </div>
 
-        <div class="col-lg-3" style="background-color: blue">
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                            戻る
-                            </button>
+        <div class="col-lg-2" style="background-color: blue">
+            <%= link_to "戻る", root_path, class:"btn btn-primary"%>
         </div>
     </div>
 </div>

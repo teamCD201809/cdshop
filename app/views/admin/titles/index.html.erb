@@ -2,41 +2,38 @@
 
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
-    	<div class="col-lg-3" style="background-color: red">
+    	<div class="col-lg-2" style="background-color: red">
 
 
     	</div>
-    	<div class="col-lg-6" style="background-color: green">
-            <div style="float:left">
-               <p>imageadafsdfs</p>
+    	<div class="col-lg-4" style="background-color: green">
+            <!-- eachでid++で繰り返す -->
+            <div>
+               <p>image表示する</p>
             </div>
-            <div style="float:left">
+        </div>
+        <div class="col-lg-2" style="background-color: green">
+            <div>
                 <p>タイトル</p>
-                <p>abc</p>
+                <p>タイトルtableから持ってくる</p>
                 <p>アーティスト名</p>
-                <p>abc</p>
+                <p>アーティストtableから持ってくる</p>
                 <p>値段</p>
-                <p>1000円</p>
+                <p>値段tableから持ってくる</p>
                 <p>ジャンル</p>
-                <p>abc</p>
+                <p>ジャンルtableから持ってくる</p>
                 <p>レーベル</p>
-                <p>abc</p>
+                <p>レーベルtableから持ってくる</p>
                 <p>在庫</p>
-                <p>有/無</p>
+                <p>ifで0なら無し、それ以外なら有</p>
                 <p>在庫数</p>
-                <p>??枚</p>
+                <p>在庫数テーブルから持ってくる</p>
             </div>
-
     	</div>
 
     	<div class="col-lg-3" style="background-color: blue">
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                編集
-            </button>
-            </div>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                削除
-            </button>
+            <%= link_to "まだ編集ページに飛んでない", admin_titles_path, class:"btn btn-primary" %><br>
+            <%= link_to "まだ削除アクションに飛んでない", admin_titles_path, class:"btn btn-primary" %>
         </div>
 	</div>
 </div>

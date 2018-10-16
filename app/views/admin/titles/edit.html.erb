@@ -3,35 +3,30 @@
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
     	<div class="col-lg-3" style="background-color: red">
+    <%= form_for(@titles) do |f| %>
     		<div>
                 <p>
                     画像
                 </p>
-
-    			<button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                画像選択
-            </button>
+    			<%= f.attachment_field :image %>
     		</div>
 
     	</div>
     	<div class="col-lg-4" style="background-color: green">
     		<p>タイトル</p>
-            <div style="background-color: white">はこ</div>
+            <%= f.text_field :title, class:"form-control" %>
             <p>アーティスト名</p>
-            <div style="background-color: white">プルダウン</div>
+            <%= f.select :artist_id, [["アーティストA", "アーティストAのid"],["アーティストB", "アーティストBのid"]], class:"form-control"%>
             <p>値段</p>
-            <div style="background-color: white">プルダウン</div>
+            <%= f.text_field :title, class:"form-control" %>
             <p>ジャンル</p>
-            <div style="background-color: white">プルダウン</div>
+            <%= f.select :artist_id, [["アーティストA", "アーティストAのid"],["アーティストB", "アーティストBのid"]], class:"form-control"%>
             <p>レーベル</p>
-            <div style="background-color: white">プルダウン</div>
-            <p>ステータス</p>
-            <div style="background-color: white">はこ</div>
+            <%= f.select :artist_id, [["アーティストA", "アーティストAのid"],["アーティストB", "アーティストBのid"]], class:"form-control"%>
             <p>在庫数</p>
-            <div style="background-color: white">はこ</div>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                戻る
-            </button>
+            <%= f.text_field :title, class:"form-control" %>
+            
+            <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
             <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
                 更新
             </button>
@@ -39,25 +34,35 @@
     	</div>
 
     	<div class="col-lg-5" style="background-color: blue">
+            <!-- eachで繰り返す -->
     		<p>disc1</p>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                追加
-            </button>
-            <div>
-                <p>曲順</p>
-                <div style="background-color: white">はこ</div>
-            </div>
-            <div>
-                <p>曲名</p>
-                <div style="background-color: white">はこ</div>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                追加
-            </button>
-            </div>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                削除
-            </button>
-            
+            <table>
+                <tbody>
+                    <tr>
+                        <th>曲順</th>
+                        <th>曲名</th>
+                    </tr>
+                    <tr>
+                        <td>曲順テーブルから持ってくる</td>
+                        <td>曲名テーブルから持ってくる</td>
+                    </tr>
+                </tbody>
+ 　          </table>
+            <p>disc2</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>曲順</th>
+                        <th>曲名</th>
+                    </tr>
+                    <tr>
+                        <td>曲順テーブルから持ってくる</td>
+                        <td>曲名テーブルから持ってくる</td>
+                    </tr>
+                </tbody>
+ 　          </table>
+
+    <% end %>
 
     	</div>
 
