@@ -1,10 +1,10 @@
-<h3>ユーザー商品一覧</h3>
+<h2>ユーザー商品検索</h2>
 
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
     	<div class="col-lg-2" style="background-color: red">
-        </div>
-        <div class="col-lg-4" style="background-color: lightblue">
+    	</div>
+    	<div class="col-lg-4" style="background-color: lightblue">
             <div style="float:left">
                <p>imageadafsdfs</p>
             </div>
@@ -30,7 +30,19 @@
             <%= link_to "カートに追加", new_user_cart_item_path, class:"btn btn-primary"%>
         </div>
 
+    	<div class="col-lg-2" style="background-color: blue">
+        </div>
+            
+	</div>
+</div>
+<div class="container"> <!-- ここを追加 -->
+    <div class="row" style="background-color: #EEEEEE"> 
+        <div class="col-lg-3" style="background-color: red">
+        </div>
+        <div class="col-lg-5" style="background-color: blue">
+        </div>
         <div class="col-lg-2" style="background-color: blue">
+            <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
         </div>
     </div>
 </div>

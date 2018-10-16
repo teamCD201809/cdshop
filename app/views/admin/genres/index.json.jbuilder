@@ -1,1 +1,1 @@
-json.array! @genres, partial: 'genres/genre', as: :genre
+json.url admin_genre_url(genre, format: :json)
