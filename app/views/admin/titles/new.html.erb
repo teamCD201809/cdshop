@@ -2,62 +2,65 @@
 
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
-    	<div class="col-lg-3" style="background-color: red">
-    		<div>
-                <p>
-                    画像
-                </p>
+        <%= form_for @title do |f| %>
+        	<div class="col-lg-3" style="background-color: red">
+        		<div>
+                    <p>
+                        画像
+                    </p>
+                    <%= f.attachment_field :image %>
 
-    			<button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                画像選択
-            </button>
-    		</div>
+        		</div>
 
-    	</div>
-    	<div class="col-lg-4" style="background-color: green">
-    		<p>タイトル</p>
-            <div style="background-color: white">はこ</div>
-            <p>アーティスト名</p>
-            <div style="background-color: white">プルダウン</div>
-            <p>値段</p>
-            <div style="background-color: white">プルダウン</div>
-            <p>ジャンル</p>
-            <div style="background-color: white">プルダウン</div>
-            <p>レーベル</p>
-            <div style="background-color: white">プルダウン</div>
-            <p>ステータス</p>
-            <div style="background-color: white">はこ</div>
-            <p>在庫数</p>
-            <div style="background-color: white">はこ</div>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                戻る
-            </button>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                登録
-            </button>
+        	</div>
+        	<div class="col-lg-4" style="background-color: green">
 
-    	</div>
+        		<p>タイトル</p>
+                <%= f.text_field :title, class:"form-control" %>
+                
+                <p>アーティスト名</p>
+                <%= f.select :artist_id, [["アーティストA", "1"],["アーティストB", "2"]], class:"form-control"%>
+                <p>値段</p>
+                <%= f.text_field :price, class:"form-control" %>
+                <p>ジャンル</p>
+                <%= f.select :genre_id, [["ジャンルA", "1"],["ジャンルB", "2"]], class:"form-control"%>
+                <p>レーベル</p>
+                <%= f.select :genre_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
+                <p>在庫数</p>
+                <%= f.text_field :title, class:"form-control" %>
 
-    	<div class="col-lg-5" style="background-color: blue">
-    		<p>disc1</p>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                追加
-            </button>
-            <div>
-                <p>曲順</p>
-                <div style="background-color: white">はこ</div>
-            </div>
-            <div>
-                <p>曲名</p>
-                <div style="background-color: white">はこ</div>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                追加
-            </button>
-            </div>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                削除
-            </button>
-            
+                <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
+                <%= f.submit "登録", class:"btn btn-primary" %>
 
-    	</div>
+        	</div>
+
+        	<div class="col-lg-5" style="background-color: blue">
+            <%= nested_form_for :disc do |f| %>
+                <p>disc1</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>曲順</th>
+                            <th>曲名</th>
+                        </tr>
+                        <tr>
+                            <td><%= f.text_field :song_order,class:"form-control" %></td>
+                            <td><%= f.text_field :song_title, class:"form-control" %></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <% end %>
+
+                    <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
+                     追加
+                    </button>
+                </div>
+                <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
+                    削除
+                </button>
+        	</div>
+        <% end %>
+    </div>
+</div>
 
