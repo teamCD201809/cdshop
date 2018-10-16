@@ -1,4 +1,4 @@
-<%= form_with(model: artist, local: true) do |form| %>
+<%= form_for([:admin, @artist]) do |form| %>
   <% if artist.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :artist %>
+    <%= form.label :アーティスト %>
     <%= form.text_field :artist %>
   </div>
 

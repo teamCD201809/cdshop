@@ -1,1 +1,1 @@
-json.array! @labels, partial: 'labels/label', as: :label
+json.url admin_label_url(label, format: json)

@@ -20,7 +20,7 @@ class Admin::GenresControllerTest < ActionDispatch::IntegrationTest
       post genres_url, params: { genre: { genre: @genre.genre } }
     end
 
-    assert_redirected_to genre_url(Genre.last)
+    assert_redirected_to admin_genre_path(assigns(:genre))
   end
 
   test "should show genre" do
@@ -35,7 +35,7 @@ class Admin::GenresControllerTest < ActionDispatch::IntegrationTest
 
   test "should update genre" do
     patch genre_url(@genre), params: { genre: { genre: @genre.genre } }
-    assert_redirected_to genre_url(@genre)
+    assert_redirected_to admin_genre_path(assigns(:genre))
   end
 
   test "should destroy genre" do
@@ -43,6 +43,6 @@ class Admin::GenresControllerTest < ActionDispatch::IntegrationTest
       delete genre_url(@genre)
     end
 
-    assert_redirected_to genres_url
+    assert_redirected_to genres_path
   end
 end

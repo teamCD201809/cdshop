@@ -20,7 +20,7 @@ class Admin::ArtistsControllerTest < ActionDispatch::IntegrationTest
       post artists_url, params: { artist: { artist: @artist.artist } }
     end
 
-    assert_redirected_to artist_url(Artist.last)
+    assert_redirected_to admin_artist_path(assigns(:store))
   end
 
   test "should show artist" do
@@ -35,7 +35,7 @@ class Admin::ArtistsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update artist" do
     patch artist_url(@artist), params: { artist: { artist: @artist.artist } }
-    assert_redirected_to artist_url(@artist)
+    assert_redirected_to admin_artist_path(assigns(:store))
   end
 
   test "should destroy artist" do
@@ -43,6 +43,6 @@ class Admin::ArtistsControllerTest < ActionDispatch::IntegrationTest
       delete artist_url(@artist)
     end
 
-    assert_redirected_to artists_url
+    assert_redirected_to admin_artists_path
   end
 end
