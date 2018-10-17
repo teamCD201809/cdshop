@@ -14,9 +14,16 @@
   <div class="field">
     <%= form.label :ジャンル名 %>
     <%= form.text_field :genre %>
-    <a style="background-color:silver">削除</a>
+    <a>削除</a>
   </div>
-
+  
+    <%= fields_for @genre do |fa| %>
+      <%= form.label :ジャンル名 %>
+      <%= form.text_field :genre %><a>削除</a><br>
+      <%= form.label :ジャンル名 %>
+      <%= form.text_field :genre %><a>削除</a>
+    <% end %>
+  
   <div class="actions">
     <a style="background-color:silver">追加</a><br>
     <%= form.submit %>
