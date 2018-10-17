@@ -3,12 +3,13 @@
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
     	<div class="col-lg-3" style="background-color: red">
-    <%= form_for @title do |f| %>
+    <%= form_for ([:admin, @title]) do |f| %>
     		<div>
                 <p>
                     画像
                 </p>
     			<%= f.attachment_field :image %>
+                <%= attachment_image_tag @title, :image, :fill, 50, 50 %>
     		</div>
 
     	</div>
@@ -16,21 +17,18 @@
     		<p>タイトル</p>
             <%= f.text_field :title, class:"form-control" %>
             <p>アーティスト名</p>
-            <%= f.select :artist_id, [["アーティストA", "アーティストAのid"],["アーティストB", "アーティストBのid"]], class:"form-control"%>
+            <%= f.select :artist_id, [["アーティストA", "1"],["アーティストB", "2"]], class:"form-control"%>
             <p>値段</p>
-            <%= f.text_field :title, class:"form-control" %>
+            <%= f.text_field :price, class:"form-control" %>
             <p>ジャンル</p>
-            <%= f.select :artist_id, [["ジャンルA", "1"],["ジャンルB", "2"]], class:"form-control"%>
+            <%= f.select :genre_id, [["ジャンルA", "1"],["ジャンルB", "2"]], class:"form-control"%>
             <p>レーベル</p>
-            <%= f.select :artist_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
+            <%= f.select :label_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
             <p>在庫数</p>
             <%= f.text_field :stock, class:"form-control" %>
-            
-            <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                更新
-            </button>
 
+            <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
+            <%= f.submit "更新", class:"btn btn-primary" %>
     	</div>
 
     	<div class="col-lg-5" style="background-color: blue">

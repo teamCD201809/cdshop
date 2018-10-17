@@ -9,30 +9,29 @@
     	</div>
     	<div class="col-lg-4" style="background-color: lightgreen">
             <div>
-                <!-- 画像が反映されない -->
-               <%= attachment_image_tag title, :image %>
+               <%= attachment_image_tag title, :image, :fill, 300, 300 %>
             </div>
         </div>
         <div class="col-lg-2" style="background-color: green">
             <div>
-                <p>タイトル</p>
+                <p>タイトル:</p>
                 <%= title.title %>
-                <p>アーティスト名</p>
+                <p>アーティスト名:</p>
                 <!-- artistテーブルから持ってこれるように -->
                 <p><%= title.artist_id %></p>
-                <p>値段</p>
+                <p>値段:</p>
                 <%= title.price %>
-                <p>ジャンル</p>
+                <p>ジャンル:</p>
                 <%= title.genre_id %>
-                <p>レーベル</p>
+                <p>レーベル:</p>
                 <%= title.label_id %>
-                <p>在庫</p>
+                <p>在庫:</p>
                 <% if (title.stock == 0) %>
                     <p>無</p>
                 <% else %>
                     <p>有</p>
                 <% end %>
-                <p>在庫数</p>
+                <p>在庫数:</p>
                 <%= title.stock %>
             </div>
     	</div>
@@ -44,5 +43,5 @@
 </div>
 <% end %>
 
-        <p>ページネーション</p>
+       <%= paginate @titles, class: "pagenate" %>
 
