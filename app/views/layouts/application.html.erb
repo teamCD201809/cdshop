@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,9 +12,9 @@
   </head>
 
   <body>
-<!-- ここから廣重編集-->
 　<header>
     <div class="header">
+      <div class="header-contents">
       <div class="social">
 <i class="fa fa-spinner fa-4x" aria-hidden="true"></i>
 </div>
@@ -23,32 +25,73 @@
         <% end %>
       </div>
       <nav class="header-nav">
-        <ul>
+        <ul class="header-text">
           <% if admin_signed_in? %>
+          <%= link_to admin_titles_path do %>
             <li class="header-list">管理者</li>
+          <% end %>
             <span class="header-list">/</span>
-            <li class="header-list">一覧</li>
+
+            <li class="header-list">
+              <div class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">一覧 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a href="#">レーベル</a></li>
+                  <li class="dropdown-item"><a href="#">アーティスト</a></li>
+                  <li class="dropdown-item"><a href="#">ジャンル</a></li>
+                  <li class="dropdown-item"><a href="#">商品</a></li>
+                  <li class="dropdown-item"><a href="#">ユーザー</a></li>
+                </ul>
+              </div>
+            </li>
             <span class="header-list">/</span>
-            <li class="header-list">新規登録</li>
-            <span class="header-list">/</span>
+
+            <li class="header-list">
+              <div class="dropdown">
+                <a href="#" class="dropdown-toggle" style="text-decoration: none;" data-toggle="dropdown">新規登録 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a href="#">レーベル</a></li>
+                  <li class="dropdown-item"><a href="#">アーティスト</a></li>
+                  <li class="dropdown-item"><a href="#">ジャンル</a></li>
+                  <li class="dropdown-item"><a href="#">商品</a></li>
+                </ul>
+              </div>
+            </li>
+
+
+　　　　　　　<%= link_to admin_orders_path do %>
             <li class="header-list">購入履歴</li>
+            <% end %>
+            <span class="header-list">/</span>
+            <%= link_to destroy_admin_session_path do %>
+            <li class="header-list">ログアウト</li>
+            <% end %>
 
           <% elsif user_signed_in? %>
+            <%= link_to user_user_path(current_user.id) do %>
             <li class="header-list">ユーザー名</li>
+            <% end %>
             <span class="header-list">/</span>
+            <%= link_to destroy_user_session_path, method: :delete do %>
             <li class="header-list">ログアウト</li>
+            <% end %>
            <% else %>
+            <%= link_to new_user_registration_path do %>
             <li class="header-list">新規登録</li>
+            <% end %>
             <span class="header-list">/</span>
+            <%= link_to new_user_session_path do %>
             <li class="header-list">ログイン</li>
           <% end %>
+          <% end %><!--ifのend-->
 
         </ul>
       </nav>
+      </div>
     </div>
   </header>
 
-<div class="dropdown">
+<!-- <div class="dropdown">
   <a href="#" class="dropdown-toggle dropdown-text" data-toggle="dropdown">Drop Down <b class="caret"></b></a>
   <ul class="dropdown-menu">
     <li class="dropdown-item"><a href="#">レーベル</a></li>
@@ -57,7 +100,7 @@
     <li><a href="dropdown-item"></a>商品</li>
     <li><a href="dropdown-item"></a>ユーザー</li>
   </ul>
-</div>
+</div> -->
 
 
 </div>

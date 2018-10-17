@@ -23,7 +23,6 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Gulim';
-	/*color: #;*/
 }
 .clearfix::after{
 	content: "";
@@ -31,12 +30,19 @@
 	clear: both;
 }
 .header {
-	width: 90%;
+	width: 100%;
 	padding: 10px 10px;
 	margin: 0 auto;
 	background-color: rgb(0, 0, 128);
 	height: 130px;
 	position: relative;
+}
+.header-contents {
+	width: 800px;
+}
+.header-text {
+    margin-right: 30px;
+	text-align: right;
 }
 .social {
 	background-color: pink;
@@ -60,22 +66,34 @@
 	position: absolute;
 	bottom : 0;
 	right: 0;
-	width: 300px;
+	width: 650px;
 }
 
 .header-list{
 	display: inline-block;
     color: white;
-    margin-right: 20px;
     font-size: 20px;
     vertical-align: baseline;
+    margin-right: 15px;
 }
-.dropdown-text{
-	color: red;
+
+.header-list a:visited {
+    color: white;
 }
+
 .dropdown-item{
 	display: block;
 }
 .dropdown:hover .dropdown-menu{
 	display: block;
+	background-color: rgb(0, 0, 128);
+	color: white;
 }
+.dropdown:link{
+	color: white;
+}
+
+/*.dropdown-item a:visited {
+    color: white;
+}*/
+
