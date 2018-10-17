@@ -25,12 +25,8 @@
             <%= f.select :artist_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
             <p>在庫数</p>
             <%= f.text_field :stock, class:"form-control" %>
-            
             <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
-            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                更新
-            </button>
-
+            <%= f.submit "更新", class:"btn btn-primary" %>
     	</div>
 
     	<div class="col-lg-5" style="background-color: blue">

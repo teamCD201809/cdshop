@@ -14,10 +14,14 @@ class Admin::TitlesController < ApplicationController
 		@titles = Title.all
 	end
 
-
-
 	def show
 
+	end
+
+	def update
+		@title = Title.find(prams[:id])
+		@title.update(title_params)
+		redirect_to admin_titles_path
 	end
 
 	def find
@@ -26,7 +30,6 @@ class Admin::TitlesController < ApplicationController
 
 	def edit
 		@title = Title.find(params[:id])
-		#こうしたい@titles = Title.find(params[:id])
 	end
 
 	def destroy
