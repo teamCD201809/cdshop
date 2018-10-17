@@ -15,6 +15,12 @@
     <%= form.label :アーティスト %>
     <%= form.text_field :artist %>
   </div>
+  <%= fields_for @genre do |fa| %>
+      <%= form.label :アーティスト %>
+      <%= form.text_field :artist %><a>削除</a><br>
+      <%= form.label :アーティスト %>
+      <%= form.text_field :artist %><a>削除</a>
+    <% end %>
 
   <div class="actions">
     <%= form.submit %>
