@@ -1,42 +1,48 @@
 <h2>管理者商品一覧</h2>
-
+<% @titles.each do |title| %>
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
+
     	<div class="col-lg-2" style="background-color: red">
 
 
     	</div>
-    	<div class="col-lg-4" style="background-color: green">
-            <!-- eachでid++で繰り返す -->
+    	<div class="col-lg-4" style="background-color: lightgreen">
             <div>
-               <p>image表示する</p>
+                <!-- 画像が反映されない -->
+               <%= attachment_image_tag title, :image %>
             </div>
         </div>
         <div class="col-lg-2" style="background-color: green">
             <div>
                 <p>タイトル</p>
-                <p>タイトルtableから持ってくる</p>
+                <%= title.title %>
                 <p>アーティスト名</p>
-                <p>アーティストtableから持ってくる</p>
+                <!-- artistテーブルから持ってこれるように -->
+                <p><%= title.artist_id %></p>
                 <p>値段</p>
-                <p>値段tableから持ってくる</p>
+                <%= title.price %>
                 <p>ジャンル</p>
-                <p>ジャンルtableから持ってくる</p>
+                <%= title.genre_id %>
                 <p>レーベル</p>
-                <p>レーベルtableから持ってくる</p>
+                <%= title.label_id %>
                 <p>在庫</p>
-                <p>ifで0なら無し、それ以外なら有</p>
+                <% if (title.stock == 0) %>
+                    <p>無</p>
+                <% else %>
+                    <p>有</p>
+                <% end %>
                 <p>在庫数</p>
-                <p>在庫数テーブルから持ってくる</p>
+                <%= title.stock %>
             </div>
     	</div>
-
     	<div class="col-lg-3" style="background-color: blue">
-            <%= link_to "まだ編集ページに飛んでない", admin_titles_path, class:"btn btn-primary" %><br>
-            <%= link_to "まだ削除アクションに飛んでない", admin_titles_path, class:"btn btn-primary" %>
+            <%= link_to "編集", edit_admin_title_path(title.id), class:"btn btn-primary" %><br>
+            <%= link_to "削除", admin_title_path(title.id), method: :delete, class:"btn btn-primary" %>
         </div>
 	</div>
 </div>
+<% end %>
 
         <p>ページネーション</p>
 

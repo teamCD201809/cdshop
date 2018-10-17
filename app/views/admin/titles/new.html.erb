@@ -2,7 +2,7 @@
 
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
-        <%= form_for @title do |f| %>
+        <%= form_for([:admin, @title]) do |f| %>
         	<div class="col-lg-3" style="background-color: red">
         		<div>
                     <p>
@@ -17,8 +17,9 @@
 
         		<p>タイトル</p>
                 <%= f.text_field :title, class:"form-control" %>
-                
+
                 <p>アーティスト名</p>
+                <!-- アーティストテーブルから名前を表示して、artist_idを登録 -->
                 <%= f.select :artist_id, [["アーティストA", "1"],["アーティストB", "2"]], class:"form-control"%>
                 <p>値段</p>
                 <%= f.text_field :price, class:"form-control" %>
@@ -27,7 +28,7 @@
                 <p>レーベル</p>
                 <%= f.select :genre_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
                 <p>在庫数</p>
-                <%= f.text_field :title, class:"form-control" %>
+                <%= f.text_field :stock, class:"form-control" %>
 
                 <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
                 <%= f.submit "登録", class:"btn btn-primary" %>
@@ -35,7 +36,7 @@
         	</div>
 
         	<div class="col-lg-5" style="background-color: blue">
-            <%= nested_form_for :disc do |f| %>
+            <!-- nested_form_for :disc do |f| -->
                 <p>disc1</p>
                 <table>
                     <tbody>
@@ -44,13 +45,13 @@
                             <th>曲名</th>
                         </tr>
                         <tr>
-                            <td><%= f.text_field :song_order,class:"form-control" %></td>
-                            <td><%= f.text_field :song_title, class:"form-control" %></td>
+                            <!-- <td>  f.text_field :song_order,class:"form-control" %></td> -->
+                            <!-- <td> f.text_field :song_title, class:"form-control" %></td> -->
                             <td></td>
                         </tr>
                     </tbody>
                 </table>
-            <% end %>
+            <!-- end %> -->
 
                     <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
                      追加

@@ -5,13 +5,13 @@ class Admin::TitlesController < ApplicationController
 	end
 
 	def create
-		@title = Title.new
+		@title = Title.new(title_params)
 		@title.save
 		redirect_to admin_titles_path
 	end
 
 	def index
-
+		@titles = Title.all
 	end
 
 
@@ -21,14 +21,22 @@ class Admin::TitlesController < ApplicationController
 	end
 
 	def find
+
 	end
 
 	def edit
-		@titles = Title.new
+		@title = Title.find(params[:id])
 		#こうしたい@titles = Title.find(params[:id])
 	end
 
 	def destroy
-
+		@title = Title.find(params[:id])
+		@title.destroy
+		redirect_to admin_titles_path
 	end
+
+	private
+   	def title_params
+ 	  	params.require(:title).permit(:title, :price, :stock)
+    end
 end
