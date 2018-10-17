@@ -6,14 +6,23 @@
   	<th class="user-table2 text-center">メールアドレス</th>
   	<th class="user-table3 text-center"></th>
   </tr>
-  <%# @users.each do |user| %>
+  <% @users.each do |user| %>
     <tr>
-      <td class="user-table1">ああああああ</td>
-      <td class="user-table2">aaaaa@aaaaaa</td>
-      <td class="user-table3"><button type="button" class="btn btn-primary">
-      <p class="buttonwidth">詳細</p>
-      </button><%#= link_to "詳細", user_path(@user.id), class: "btn btn-danger destroy_book_#{@book.id}", method: :delete, "data-confirm" => "本当に消しますか?" %> </</td>
+      <td class="user-table1">
+        <%= user.name %>
+      </td>
+      <td class="user-table2">
+        <%= user.email %>
+      </td>
+      <td class="user-table3">
+        <%= link_to user_path(user.id), class: "btn btn-primary" do %>
+          <!-- <button type="button" class="btn btn-primary"> -->
+            <p class="buttonwidth">詳細</p>
+          </button>
+        <% end %><%#= link_to "詳細", user_path(@user.id), class: "btn btn-danger destroy_book_#{@book.id}", method: :delete, "data-confirm" => "本当に消しますか?" %> 
+      </td>
     </tr>
+  <% end %>
     <tr>
       <td class="user-table1">ああああああ</td>
       <td class="user-table2">aaaaa@aaaaaa</td>
