@@ -1,6 +1,9 @@
-<h1>アーティスト編集</h1>
+<main>
 
-<%= render 'form', artist: @artist %>
+	<h1>編集ページ</h1>
 
-<%= link_to '詳細', [:admin, @artist] %> |
-<%= link_to '戻る', admin_artists_path %>
+	<%= render 'form', artist: @artist %>
+
+	<%= link_to '登録情報確認', [:admin, @artist] %> |
+	<%= link_to '戻る', admin_artists_path %>
+</main>

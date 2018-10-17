@@ -1,26 +1,28 @@
-<p id="notice"><%= notice %></p>
+<main>
+  <p id="notice"><%= notice %></p>
 
-<h1>アーティスト一覧</h1>
+  <h1>アーティスト一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>アーティスト</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @artists.each do |artist| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= artist.artist %></td>
-        <td><%= link_to '編集', edit_admin_artist_path(artist) %></td>
-        <td><%= link_to '削除', [:admin, artist], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>アーティスト</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<%= paginate @artists %><br>
-<%= link_to 'アーティスト登録', new_admin_artist_path %>
+    <tbody>
+      <% @artists.each do |artist| %>
+        <tr>
+          <td><%= artist.artist %></td>
+          <td><%= link_to '編集', edit_admin_artist_path(artist) %></td>
+          <td ><%= link_to '削除', [:admin, artist], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <%= paginate @artists %><br>
+  <%= link_to '新規登録', new_admin_artist_path %>
+</main>
