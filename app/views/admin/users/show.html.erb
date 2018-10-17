@@ -1,72 +1,90 @@
-<main>
+<div class="main">
   <div class="user-account-box">
   	<div class="input-area">
-    
+
     <div class="user-account-columns">
       <p class="bold">名前</p>
-        <div class="input-form-show">
-        </div>
+      <div class="input-form-show">
+        <%= @user.name %>
+      </div>
     </div>
     <div class="user-account-columns">
       <p class="bold">名前（カナ）</p>
         <div class="input-form-show">
+          <%= @user.name_kana %>
         </div>
     </div>
     <div class="user-account-columns">
       <p class="bold">郵便番号</p>
-        <div class="input-form-show">
-        </div>
+      <div class="input-form-show">
+        <%= @user.postal_code %>
+      </div>
     </div>
     <div class="user-account-columns">
       <p class="bold">住所</p>
-        <div class="input-form-show">
-        </div>
+      <div class="input-form-show">
+        <%= @user.address %>
+      </div>
     </div>
     <div class="user-account-columns">
       <p class="bold">電話番号</p>
-        <div class="input-form-show">
-        </div>
+      <div class="input-form-show">
+        <%= @user.tel_number %>
+      </div>
     </div>
     <div class="user-account-columns">
       <p class="bold">メールアドレス</p>
-        <div class="input-form-show">
-        </div>
+      <div class="input-form-show">
+        <%= @user.email %>
+      </div>
     </div>
-    <div class="user-account-columns">
-      <p class="bold">パスワード</p>
-        <div class="input-form-show">
-        </div>
-    </div>
+
     <div class="right">
-      <button type="button" class="btn btn-primary">
-      <p class="buttonwidth">編集</p>
-      </button>
-    </div>
+      <%= link_to edit_admin_user_path, class: "btn btn-primary" do %>
+        <p class="buttonwidth">編集</p>
+        <% end %>
     </div>
   </div>
-　<div class="block">
-  <button type="button" class="btn btn-primary">
+  </div>
+
+ <div class="block">
+    <%= link_to :back, class: "btn btn-primary" do %>
       <p class="buttonwidth">戻る</p>
-      </button>
+    <% end %>
   </div>
+
+
+
+
 
   <div class="history-area">
   	<p class="title-center">＜購入履歴＞</p>
+
+    <% @user.orders each do |order| %>
     <div class="history-box">
       <div class="history-contents">
         <p class="bold">購入者</p>
-        <%#= order.users.name %>
+        <%#= @user.name %>
         <p>ああああああ</p>
         <p class="bold">購入日</p>
-        <%#= order.users.name %>
+        <%#= order.created_at %>
         <p>2018/7/5/12:05</p>
         <p class="bold">購入内容</p>
-        <%#= order.cart_items %>
-        <p>title1 3000円</p>
-        <p>title2 3000円</p>
+
+
+        <%# order.order_items each do |orders_item| %>
+          <p>title1 3000円</p>
+          <p>title2 3000円</p>
+          <%= orders_item.    %>
+        <%# end %> <!--購入アイテムそれぞれについて タイトル、金額、ステータスを表示-->
+
+
         <p class="bold">総計</p>
+        <%#= order.order_purchase %>
         <p>6000円</p>
         <p class="bold">送付先</p>
+        <%#= order.sub_post_code %>
+        <%#= order.sub_address %>
         <p>111-1111</p>
         <p>○○県××市△△町2-22-2</p>
         <p class="bold">ステータス</p>
@@ -95,6 +113,6 @@
         <p>出荷前 or 済み</p>
       </div>
 　　 </div>
-  </div>
 
-</main>
+   </div>
+ </div>

@@ -84,9 +84,13 @@
             <li class="header-list">ログアウト</li>
             <% end %>
 
+
+
           <% elsif user_signed_in? %>
             <%= link_to user_user_path(current_user.id) do %>
-            <li class="header-list">ユーザー名</li>
+              <li class="header-list">
+                <%= current_user.name %>
+              </li>
             <% end %>
             <span class="header-list">/</span>
             <%= link_to destroy_user_session_path, method: :delete do %>

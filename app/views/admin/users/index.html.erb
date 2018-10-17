@@ -1,4 +1,4 @@
-<main>
+<div class="main">
 
 <table class="table table-bordered">
   <tr>
@@ -15,29 +15,16 @@
         <%= user.email %>
       </td>
       <td class="user-table3">
-        <%= link_to user_path(user.id), class: "btn btn-primary" do %>
-          <!-- <button type="button" class="btn btn-primary"> -->
+        <%= link_to admin_user_path(user.id), class: "btn btn-primary" do %>
             <p class="buttonwidth">詳細</p>
-          </button>
-        <% end %><%#= link_to "詳細", user_path(@user.id), class: "btn btn-danger destroy_book_#{@book.id}", method: :delete, "data-confirm" => "本当に消しますか?" %> 
+        <% end %>
       </td>
     </tr>
   <% end %>
-    <tr>
-      <td class="user-table1">ああああああ</td>
-      <td class="user-table2">aaaaa@aaaaaa</td>
-      <td class="user-table3"><button type="button" class="btn btn-primary">
-      <p class="buttonwidth">詳細</p>
-      </button></td>
-    </tr>
-    <tr>
-      <td class="user-table1">ああああああ</td>
-      <td class="user-table2">aaaaa@aaaaaa</td>
-      <td class="user-table3"><button type="button" class="btn btn-primary">
-      <p class="buttonwidth">詳細</p>
-      </button></td>
-    </tr>
+</table>
 
-</main>
+<%= link_to :back, class: "btn btn-primary" do %>
+  <p class="buttonwidth">戻る</p>
+<% end %>
 
-
+</div>
