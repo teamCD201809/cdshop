@@ -2,6 +2,8 @@ class Admin::TitlesController < ApplicationController
 
 	def new
 		@title = Title.new
+		@disc = @title.discs.build
+		@song = @disc.songs.build
 	end
 
 	def create
@@ -11,7 +13,7 @@ class Admin::TitlesController < ApplicationController
 	end
 
 	def index
-		@titles = Title.all
+		@titles = Title.page(params[:page]).reverse_order
 	end
 
 
@@ -20,13 +22,19 @@ class Admin::TitlesController < ApplicationController
 
 	end
 
+	def update
+        @title = Title.find(params[:id])
+        @title.update(title_params)
+        redirect_to admin_titles_path
+    end
+
+
 	def find
 
 	end
 
 	def edit
 		@title = Title.find(params[:id])
-		#こうしたい@titles = Title.find(params[:id])
 	end
 
 	def destroy
@@ -37,6 +45,6 @@ class Admin::TitlesController < ApplicationController
 
 	private
    	def title_params
- 	  	params.require(:title).permit(:title, :price, :stock)
+ 	  	params.require(:title).permit(:title, :artist_id, :price, :genre_id, :label_id, :image, :stock, discs_attributes: [:id, :disc_name, :done, :_destroy])
     end
 end

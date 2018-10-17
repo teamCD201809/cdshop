@@ -26,7 +26,7 @@
                 <p>ジャンル</p>
                 <%= f.select :genre_id, [["ジャンルA", "1"],["ジャンルB", "2"]], class:"form-control"%>
                 <p>レーベル</p>
-                <%= f.select :genre_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
+                <%= f.select :label_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
                 <p>在庫数</p>
                 <%= f.text_field :stock, class:"form-control" %>
 
@@ -34,33 +34,15 @@
                 <%= f.submit "登録", class:"btn btn-primary" %>
 
         	</div>
-
+            
         	<div class="col-lg-5" style="background-color: blue">
-            <!-- nested_form_for :disc do |f| -->
+                <%= f.fields_for ([:admin, @disc]) do |disc| %>
                 <p>disc1</p>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>曲順</th>
-                            <th>曲名</th>
-                        </tr>
-                        <tr>
-                            <!-- <td>  f.text_field :song_order,class:"form-control" %></td> -->
-                            <!-- <td> f.text_field :song_title, class:"form-control" %></td> -->
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            <!-- end %> -->
-
-                    <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                     追加
-                    </button>
-                </div>
-                <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                    削除
-                </button>
-        	</div>
+                <%= render 'disc_fields', f: disc %>
+                <% end %>
+                <%= link_to_add_association 'discを追加', f,:discs, class: 'btn btn-primary' %>
+            </div>
+            
         <% end %>
     </div>
 </div>
