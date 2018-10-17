@@ -1,6 +1,8 @@
-<h1>Editing Label</h1>
+<main>
+	<h1>編集ページ</h1>
 
-<%= render 'form', label: @label %>
+	<%= render 'form', label: @label %>
 
-<%= link_to '詳細', [:admin, @label] %> |
-<%= link_to '戻る', admin_labels_path %>
+	<%= link_to '登録情報確認', [:admin, @label] %> |
+	<%= link_to '戻る', admin_labels_path %>
+</main>

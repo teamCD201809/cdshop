@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
+<main>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>レーベル:</strong>
-  <%= @label.label %>
-</p>
+	<p>
+	<h4>登録情報</h4>
+  	<strong>レーベル:</strong>
+  	<%= @label.label %>
+	</p>
 
-<%= link_to '編集', edit_admin_label_path(@label) %> |
-<%= link_to '戻る', admin_labels_path %>
+	<%= link_to '編集', edit_admin_label_path(@label) %> |
+	<%= link_to '戻る', admin_labels_path %>
+</main>
