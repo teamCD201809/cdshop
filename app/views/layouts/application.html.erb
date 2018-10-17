@@ -36,11 +36,21 @@
               <div class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">一覧 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="#">レーベル</a></li>
-                  <li class="dropdown-item"><a href="#">アーティスト</a></li>
-                  <li class="dropdown-item"><a href="#">ジャンル</a></li>
-                  <li class="dropdown-item"><a href="#">商品</a></li>
-                  <li class="dropdown-item"><a href="#">ユーザー</a></li>
+                  <li class="dropdown-item">
+                    <%= link_to "レーベル", admin_labels_path %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "アーティスト", admin_artists_path %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "ジャンル", admin_genres_path %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "商品", admin_titles_path %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "ユーザー", admin_users_path %>
+                  </li>
                 </ul>
               </div>
             </li>
@@ -50,20 +60,27 @@
               <div class="dropdown">
                 <a href="#" class="dropdown-toggle" style="text-decoration: none;" data-toggle="dropdown">新規登録 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="#">レーベル</a></li>
-                  <li class="dropdown-item"><a href="#">アーティスト</a></li>
-                  <li class="dropdown-item"><a href="#">ジャンル</a></li>
-                  <li class="dropdown-item"><a href="#">商品</a></li>
+                  <li class="dropdown-item">
+                    <%= link_to "レーベル", new_admin_label_path %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "アーティスト", new_admin_artist_path %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "ジャンル", new_admin_genre_path %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "商品", new_admin_title_path %>
+                  </li>
                 </ul>
               </div>
             </li>
-
-
-　　　　　　　<%= link_to admin_orders_path do %>
+            <span class="header-list">/</span>
+            <%= link_to admin_orders_path do %>
             <li class="header-list">購入履歴</li>
             <% end %>
             <span class="header-list">/</span>
-            <%= link_to destroy_admin_session_path do %>
+            <%= link_to destroy_admin_session_path, method: :delete do %>
             <li class="header-list">ログアウト</li>
             <% end %>
 
@@ -91,26 +108,7 @@
     </div>
   </header>
 
-<!-- <div class="dropdown">
-  <a href="#" class="dropdown-toggle dropdown-text" data-toggle="dropdown">Drop Down <b class="caret"></b></a>
-  <ul class="dropdown-menu">
-    <li class="dropdown-item"><a href="#">レーベル</a></li>
-    <li class="dropdown-item"><a href="#">アーティスト</a></li>
-    <li><a href="dropdown-item"></a>ジャンル</li>
-    <li><a href="dropdown-item"></a>商品</li>
-    <li><a href="dropdown-item"></a>ユーザー</li>
-  </ul>
-</div> -->
-
-
 </div>
-
-
-
-
-
-<!--  ここまで廣重編集-->
-
     <%= yield %>
   </body>
 </html>

@@ -32,7 +32,7 @@
 .header {
 	width: 100%;
 	padding: 10px 10px;
-	margin: 0 auto;
+	margin: 0 auto 50px auto;
 	background-color: rgb(0, 0, 128);
 	height: 130px;
 	position: relative;
@@ -80,9 +80,14 @@
 .header-list a:visited {
     color: white;
 }
+.header-list a:link {
+    color: white;
+}
+
 
 .dropdown-item{
 	display: block;
+	text-align: center;
 }
 .dropdown:hover .dropdown-menu{
 	display: block;
@@ -92,12 +97,6 @@
 .dropdown:link{
 	color: white;
 }
-
-/*.dropdown-item a:visited {
-    color: white;
-}*/
-
-
 
 /*以下全ページ反映*/
 .main {
