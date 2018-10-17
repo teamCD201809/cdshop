@@ -3,7 +3,7 @@
 <div class="container"> <!-- ここを追加 -->
     <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
     	<div class="col-lg-3" style="background-color: red">
-    <%= form_for(@titles) do |f| %>
+    <%= form_for @title do |f| %>
     		<div>
                 <p>
                     画像
@@ -20,11 +20,11 @@
             <p>値段</p>
             <%= f.text_field :title, class:"form-control" %>
             <p>ジャンル</p>
-            <%= f.select :artist_id, [["アーティストA", "アーティストAのid"],["アーティストB", "アーティストBのid"]], class:"form-control"%>
+            <%= f.select :artist_id, [["ジャンルA", "1"],["ジャンルB", "2"]], class:"form-control"%>
             <p>レーベル</p>
-            <%= f.select :artist_id, [["アーティストA", "アーティストAのid"],["アーティストB", "アーティストBのid"]], class:"form-control"%>
+            <%= f.select :artist_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
             <p>在庫数</p>
-            <%= f.text_field :title, class:"form-control" %>
+            <%= f.text_field :stock, class:"form-control" %>
             
             <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
             <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
