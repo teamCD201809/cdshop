@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, :name_kana, :address, presence: true
-  validates :postal_code, presence: true
-  validates :tel_number, presence: true
+  validates :name, :address, presence: true
+  validates :name_kana, presence: true, format: { with:/[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/}
+  validates :postal_code, presence: true, length: { is: 7}, numericality:{only_integer: true}
+  validates :tel_number, presence: true, length: {minimum:7, maximum:11 }, numericality:{only_integer: true}
 end
