@@ -15,12 +15,6 @@
     <%= form.label :レーベル %>
     <%= form.text_field :label %>
   </div>
-  <%= fields_for @genre do |fa| %>
-      <%= form.label :レーベル %>
-      <%= form.text_field :label %><a>削除</a><br>
-      <%= form.label :レーベル %>
-      <%= form.text_field :label %><a>削除</a>
-    <% end %>
 
   <div class="actions">
     <%= form.submit %>
