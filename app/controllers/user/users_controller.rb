@@ -18,4 +18,6 @@ class User::UsersController < ApplicationController
   	params.require(:user).permit(:name, :name_kana,
   		:postal_code, :address, :tel_number, :email)
   end
+  def bye
+  end
 end
