@@ -1,4 +1,4 @@
 class CartItem < ApplicationRecord
-	belongs_to :title, optional: true
-	belongs_to :user, optional: true
+	belongs_to :title
+	belongs_to :user
 end

@@ -2,6 +2,9 @@ class Admin::TitlesController < ApplicationController
 
 	def new
 		@title = Title.new
+		@artist = Artist.all.map{|o| [o.artist, o.id]}
+		@genre = Genre.all.map{|o| [o.genre, o.id]}
+		@label = Label.all.map{|o| [o.label, o.id]}
 		@disc = @title.discs.build
 		@song = @disc.songs.build
 	end
@@ -35,6 +38,9 @@ class Admin::TitlesController < ApplicationController
 
 	def edit
 		@title = Title.find(params[:id])
+		@artist = Artist.all.map{|o| [o.artist, o.id]}
+		@genre = Genre.all.map{|o| [o.genre, o.id]}
+		@label = Label.all.map{|o| [o.label, o.id]}
 	end
 
 	def destroy

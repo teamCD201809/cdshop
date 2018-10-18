@@ -20,13 +20,13 @@
 
                 <p>アーティスト名</p>
                 <!-- アーティストテーブルから名前を表示して、artist_idを登録 -->
-                <%= f.select :artist_id, [["アーティストA", "1"],["アーティストB", "2"]], class:"form-control"%>
+                <%= f.select :artist_id, @artist %>
                 <p>値段</p>
                 <%= f.text_field :price, class:"form-control" %>
                 <p>ジャンル</p>
-                <%= f.select :genre_id, [["ジャンルA", "1"],["ジャンルB", "2"]], class:"form-control"%>
+                <%= f.select :genre_id, @genre %>
                 <p>レーベル</p>
-                <%= f.select :label_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
+                <%= f.select :label_id, @label %>
                 <p>在庫数</p>
                 <%= f.text_field :stock, class:"form-control" %>
 
@@ -34,7 +34,6 @@
                 <%= f.submit "登録", class:"btn btn-primary" %>
 
         	</div>
-            
         	<div class="col-lg-5" style="background-color: blue">
                 <%= f.fields_for ([:admin, @disc]) do |disc| %>
                 <p>disc1</p>
@@ -42,7 +41,6 @@
                 <% end %>
                 <%= link_to_add_association 'discを追加', f,:discs, class: 'btn btn-primary' %>
             </div>
-            
         <% end %>
     </div>
 </div>
