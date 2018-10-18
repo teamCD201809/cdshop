@@ -2,6 +2,7 @@ class User::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+
   def show
     @user = User.find(params[:id])
   end
@@ -12,12 +13,14 @@ class User::UsersController < ApplicationController
   	  redirect_to user_user_path(@user.id)
     end
   end
+  
+def bye
+    @user = User.find(params[:id])
+end
 
   private
   def user_params
   	params.require(:user).permit(:name, :name_kana,
   		:postal_code, :address, :tel_number, :email)
-  end
-  def bye
   end
 end
