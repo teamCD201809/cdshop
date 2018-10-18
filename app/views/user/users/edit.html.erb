@@ -1,0 +1,56 @@
+<div class="main">
+  <div class="user-account-box">
+  	<div class="input-area">
+
+      <%= form_for @user, url: user_user_path do |f| %>
+
+
+        <div class="user-account-columns">
+          <p class="bold">名前</p>
+          <%= f.text_field :name, class: "edit-useraccount" %>
+        </div>
+        <div class="user-account-columns">
+          <p class="bold">名前（カナ）</p>
+          <%= f.text_field :name_kana, class: "edit-useraccount" %>
+        </div>
+        <div class="user-account-columns">
+          <p class="bold">郵便番号</p>
+          <%= f.text_field :postal_code, class: "edit-useraccount" %>
+        </div>
+        <div class="user-account-columns">
+          <p class="bold">住所</p>
+          <%= f.text_field :address, class: "edit-useraccount" %>
+        </div>
+        <div class="user-account-columns">
+          <p class="bold">電話番号</p>
+          <%= f.text_field :tel_number, class: "edit-useraccount" %>
+        </div>
+       <div class="user-account-columns">
+          <p class="bold">メールアドレス</p>
+          <%= f.text_field :email, class: "edit-useraccount" %>
+        </div> 
+
+        <div class="right">
+          <%= f.submit :class=>"btn btn-primary" do %>
+            <p class="buttonwidth">更新</p>
+          <% end %>
+          <%= link_to user_user_path(@user.id), class: "btn btn-primary",method: :delete, "data-confirm" => "本当に消しますか？" do %>
+            <p class="buttonwidth">削除</p>
+          <% end %>
+        </div>
+
+        <% end %>
+
+
+    </div>
+  </div>
+
+  <%= link_to "パスワードを変更する", edit_user_registration_path %>
+
+　<div class="block">
+    <%= link_to :back, class: "btn btn-primary" do %>
+      <p class="buttonwidth">戻る</p>
+    <% end %>
+  </div>
+
+</div>
