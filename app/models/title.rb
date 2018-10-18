@@ -3,9 +3,9 @@ class Title < ApplicationRecord
 has_many :cart_items, dependent: :destroy
 has_many :discs, dependent: :destroy
 accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
-# belongs_to :artist
-# belongs_to :genre
-# belongs_to :label
+belongs_to :artist
+belongs_to :genre
+belongs_to :label
 attachment :image
 
 

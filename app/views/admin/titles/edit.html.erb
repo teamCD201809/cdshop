@@ -17,13 +17,13 @@
     		<p>タイトル</p>
             <%= f.text_field :title, class:"form-control" %>
             <p>アーティスト名</p>
-            <%= f.select :artist_id, [["アーティストA", "1"],["アーティストB", "2"]], class:"form-control"%>
+            <%= f.select :artist_id, @artist %>
             <p>値段</p>
             <%= f.text_field :price, class:"form-control" %>
             <p>ジャンル</p>
-            <%= f.select :genre_id, [["ジャンルA", "1"],["ジャンルB", "2"]], class:"form-control"%>
+            <%= f.select :genre_id, @genre %>
             <p>レーベル</p>
-            <%= f.select :label_id, [["レーベルA", "1"],["レーベルB", "2"]], class:"form-control"%>
+            <%= f.select :label_id, @label %>
             <p>在庫数</p>
             <%= f.text_field :stock, class:"form-control" %>
 
