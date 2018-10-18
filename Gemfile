@@ -73,4 +73,4 @@ gem 'nested_form'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'cocoon'
-
+gem 'paranoia'
