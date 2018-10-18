@@ -60,7 +60,7 @@
   <div class="history-area">
   	<p class="title-center">＜購入履歴＞</p>
 
-    <% @user.orders each do |order| %>
+    <%# @user.orders each do |order| %>
     <div class="history-box">
       <div class="history-contents">
         <p class="bold">購入者</p>
@@ -75,7 +75,7 @@
         <%# order.order_items each do |orders_item| %>
           <p>title1 3000円</p>
           <p>title2 3000円</p>
-          <%= orders_item.    %>
+          <%#= orders_item.    %>
         <%# end %> <!--購入アイテムそれぞれについて タイトル、金額、ステータスを表示-->
 
 
@@ -91,6 +91,7 @@
         <p>出荷前 or 済み</p>
       </div>
 　　 </div>
+    <%# end %>
 
     <div class="history-box">
       <div class="history-contents">

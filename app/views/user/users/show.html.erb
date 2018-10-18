@@ -1,0 +1,73 @@
+<div class="main">
+  <div class="user-account-box">
+  	<div class="input-area">
+
+    <div class="user-account-columns">
+      <p class="bold">名前</p>
+      <div class="input-form-show">
+        <%= @user.name %>
+      </div>
+    </div>
+    <div class="user-account-columns">
+      <p class="bold">名前（カナ）</p>
+        <div class="input-form-show">
+          <%= @user.name_kana %>
+        </div>
+    </div>
+    <div class="user-account-columns">
+      <p class="bold">郵便番号</p>
+      <div class="input-form-show">
+        <%= @user.postal_code %>
+      </div>
+    </div>
+    <div class="user-account-columns">
+      <p class="bold">住所</p>
+      <div class="input-form-show">
+        <%= @user.address %>
+      </div>
+    </div>
+    <div class="user-account-columns">
+      <p class="bold">電話番号</p>
+      <div class="input-form-show">
+        <%= @user.tel_number %>
+      </div>
+    </div>
+    <div class="user-account-columns">
+      <p class="bold">メールアドレス</p>
+      <div class="input-form-show">
+        <%= @user.email %>
+      </div>
+    </div>
+
+    <div class="right">
+      <%= link_to edit_user_user_path, class: "btn btn-primary" do %>
+        <p class="buttonwidth">編集</p>
+        <% end %>
+    </div>
+  </div>
+  </div>
+
+ <div class="block">
+    <%= link_to :back, class: "btn btn-primary" do %>
+      <p class="buttonwidth">戻る</p>
+    <% end %>
+  </div>
+
+   <%=link_to "パスワードを変更する", edit_user_registration_path %>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="history-area">
+  </div>
+
+</div>
