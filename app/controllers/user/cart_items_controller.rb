@@ -8,6 +8,10 @@ class User::CartItemsController < ApplicationController
 		redirect_to user_titles_path
 	end
 
+    def index
+    	@user = User.find(params[:id])
+    end
+
 
 	private
    	def cart_item_params

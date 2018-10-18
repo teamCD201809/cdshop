@@ -93,17 +93,21 @@
               </li>
             <% end %>
             <span class="header-list">/</span>
+            <li class="header-list">
+              <%= link_to "🛒", user_cart_items_path %>
+            </li>
+            <span class="header-list">/</span>
             <%= link_to destroy_user_session_path, method: :delete do %>
-            <li class="header-list">ログアウト</li>
+              <li class="header-list">ログアウト</li>
             <% end %>
            <% else %>
-            <%= link_to new_user_registration_path do %>
-            <li class="header-list">新規登録</li>
-            <% end %>
-            <span class="header-list">/</span>
-            <%= link_to new_user_session_path do %>
-            <li class="header-list">ログイン</li>
-          <% end %>
+             <%= link_to new_user_registration_path do %>
+               <li class="header-list">新規登録</li>
+             <% end %>
+             <span class="header-list">/</span>
+             <%= link_to new_user_session_path do %>
+               <li class="header-list">ログイン</li>
+             <% end %>
           <% end %><!--ifのend-->
 
         </ul>

@@ -1,0 +1,101 @@
+<div class="main">
+  <p class="title-center">＜マイカート＞</p>
+　
+  <div class="cart-items">
+    <div class="cart-item-box clearfix">
+      <%= @user.cart_items.each do |cart_item| %>
+      <div class="jacket-box">
+        <%= image_tag 'sample-author5.jpg', class:"jacket clearfix" %>
+      </div>
+      <div class="title-contents clearfix">
+        <p class="bold">タイトル</p>
+        <%= cart_item.title %>
+        <p>title1</p>
+        <p class="bold">アーティスト名</p>
+        <%#= order.users.name %>
+        <p>ミスチル</p>
+        <p class="bold">値段</p>
+        <%#= order.cart_items %>
+        <p>3000円</p>
+        <p class="bold">ジャンル</p>
+        <p>J-pop</p>
+        <p class="bold">レーベル</p>
+        <p>avex</p>
+        <p class="bold">在庫状況</p>
+      <% end %>
+        <select name ="">
+          <option value="">1</option>
+        </select>
+        <span>枚</span>
+      </div>
+　　 </div>
+    <div class="cart-delete">
+      <button type="button" class="btn btn-primary">
+        <p class="buttonwidth">削除</p>
+      </button>
+    </div>
+
+
+
+    <div class="cart-item-box clearfix">
+      <%= image_tag 'sample-author5.jpg', class:"jacket" %>
+      <div class="title-contents">
+        <p class="bold">タイトル</p>
+        <%#= order.users.name %>
+        <p>title1</p>
+        <p class="bold">アーティスト名</p>
+        <%#= order.users.name %>
+        <p>ミスチル</p>
+        <p class="bold">値段</p>
+        <%#= order.cart_items %>
+        <p>3000円</p>
+        <p class="bold">ジャンル</p>
+        <p>J-pop</p>
+        <p class="bold">レーベル</p>
+        <p>avex</p>
+        <p class="bold">在庫状況</p>
+        <select name ="">
+          <option value="">1</option>
+        </select>
+        <span>枚</span>
+      </div>
+　　 </div>
+
+    <div class="cart-delete">
+      <button type="button" class="btn btn-primary">
+        <p class="buttonwidth">削除</p>
+      </button>
+    </div>
+
+
+  </div>
+
+  <div class="cart-text">
+    <p>合計金額: 6000円</p>
+    <span><button type="button" class="btn btn-primary">
+      <p class="buttonwidth">購入する</p></button></span>
+    <br>
+    <br>
+    <p>送付先</p>
+    <div class="address-list">
+      <input type="radio">
+      <span>現住所<span><br>
+       <p>111-1111
+       〇〇県△△市×町1-11-1<p>
+    </div>
+    <div class="address-list">
+      <input type="radio">
+      <span>その他の配送先</span><br>
+      <p>111-1112
+       〇〇県△△市×町1-11-2
+       </p><span><button type="button" class="btn btn-primary">
+      <p class="buttonwidth">削除</p></button></span>
+    </div>
+    <div class="address-list">
+      <input type="radio">
+      <span>新しい配送先入力</span><br>
+      <input type="text" value="" class="delivery-address-input" placeholder="">
+    </div>
+  </div>
+  
+</div>

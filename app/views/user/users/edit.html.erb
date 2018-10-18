@@ -28,7 +28,7 @@
        <div class="user-account-columns">
           <p class="bold">メールアドレス</p>
           <%= f.text_field :email, class: "edit-useraccount" %>
-        </div> 
+        </div>
 
         <div class="right">
           <%= f.submit :class=>"btn btn-primary" do %>
@@ -38,15 +38,13 @@
             <p class="buttonwidth">削除</p>
           <% end %>
         </div>
-
-        <% end %>
-
-
     </div>
   </div>
+  <% end %>
 
-  <%= link_to "パスワードを変更する", edit_user_registration_path %>
-
+  <div class="pass-link">
+    <%= link_to "パスワードを変更する", edit_user_registration_path %>
+  </div>
 　<div class="block">
     <%= link_to :back, class: "btn btn-primary" do %>
       <p class="buttonwidth">戻る</p>
