@@ -2,7 +2,7 @@ class User::TitlesController < ApplicationController
 #before_action :authenticate_user!
 
 	def index
-		@titles = Title.page(params[:page]).reverse_order
+		@titles = Title.search(params[:search])
 		@cart_item = CartItem.new
 
 	end
@@ -10,6 +10,8 @@ class User::TitlesController < ApplicationController
 	def show
 		@title = Title.find(params[:id])
 		@cart_item = CartItem.new
+		@discs = Disc.where(title_id: @title)
+		@songs = Song.order(:song_order)
 	end
 
 	def find
