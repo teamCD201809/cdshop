@@ -12,10 +12,16 @@ attachment :image
 
 #廣重変更
 	def self.search(search) #self.でクラスメソッドとしている
-    	#if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      if search
+      Title.where(['title LIKE ? OR artist LIKE ?', "%#{search}%", "%#{search}%"])
+
+
+      #if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
     		#Title.where(genre_id: (Genre.find_by(['genre LIKE ?', "%#{search}%"])).id)
     		#Title.where(['title LIKE ?', "%#{search}%"])
 
+      # if ['title LIKE ?', "%#{search}%"] != nil
+      #   Title.where(['title LIKE ?', "%#{search}%"])
 
 
 
@@ -26,10 +32,10 @@ attachment :image
   #   		Title.where(genre_id: (Genre.find_by(['genre LIKE ?', "%#{search}%"])).id)
 
   #   	elsif ['artist LIKE ?', "%#{search}%"] != nil
-  #   		Title.where(genre_id: (Artist.find_by(['artist LIKE ?', "%#{search}%"])).id)
+  #   		Title.where(artist_id: (Artist.find_by(['artist LIKE ?', "%#{search}%"])).id)
 
-    	if ['artist LIKE ?', "%#{search}%"] != nil
-    		Title.where(artist_id: (Artist.find_by(['artist LIKE ?', "%#{search}%"])).id)
+    	# if ['artist LIKE ?', "%#{search}%"] != nil
+    	# 	Title.where(artist_id: (Artist.find_by(['artist LIKE ?', "%#{search}%"])).id)
 
     		# elsif ['genre LIKE ?', "%#{search}%"] != nil
     		# Title.where(genre_id: (Genre.find_by(['genre LIKE ?', "%#{search}%"])).id)
@@ -49,7 +55,7 @@ attachment :image
       		#(Genre.where(['genre LIKE ?', "%#{search}%"])).id)
       		#Title.where(Genre.where(['genre LIKE ?', "%#{search}%"]))
     	else
-      		Title.all.reverse_order #表示。
+      	Title.all.reverse_order #表示。
     	end
 	end
 
