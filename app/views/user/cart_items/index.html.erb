@@ -1,101 +1,114 @@
 <div class="main">
   <p class="title-center">＜マイカート＞</p>
 　
-  <div class="cart-items">
-    <div class="cart-item-box clearfix">
-      <%= @user.cart_items.each do |cart_item| %>
-      <div class="jacket-box">
-        <%= image_tag 'sample-author5.jpg', class:"jacket clearfix" %>
-      </div>
-      <div class="title-contents clearfix">
-        <p class="bold">タイトル</p>
-        <%= cart_item.title %>
-        <p>title1</p>
-        <p class="bold">アーティスト名</p>
-        <%#= order.users.name %>
-        <p>ミスチル</p>
-        <p class="bold">値段</p>
-        <%#= order.cart_items %>
-        <p>3000円</p>
-        <p class="bold">ジャンル</p>
-        <p>J-pop</p>
-        <p class="bold">レーベル</p>
-        <p>avex</p>
-        <p class="bold">在庫状況</p>
+      <% @cart_items.each do |cart_item| %>
+        <div class="cart_items">
+          <div class="cart-item-box clearfix">
+            <div class="jacket-box">
+              <%= attachment_image_tag cart_item.title, :image, :fill, 200, 200 %>
+
+
+            </div>
+
+
+       <!--  <p>デバッグ用　タイトルID
+         <%= cart_item.title_id %>
+         アーティストID
+         <%= cart_item.title.artist_id %> -->
+
+
+            <div class="title-contents clearfix">
+              <p class="bold">タイトル</p>
+              <%= cart_item.title.title %>
+              <p class="bold">アーティスト名</p>
+              <%= cart_item.title.artist.artist %>
+              <p class="bold">値段</p>
+              <%= cart_item.title.price %>
+              <p class="bold">ジャンル</p>
+              <%= cart_item.title.genre.genre %>
+              <p class="bold">レーベル</p>
+              <%= cart_item.title.label.label %>
+              <p class="bold">在庫数</p>
+              <%= cart_item.title.stock %>
+              <p class="bold">購入個数</p>
+
+             <%#= form_for @user, url: admin_user_path do |f| %>
+
+
+              <%= form_for [:user, cart_item] do |f| %>
+                <% a = cart_item.title.stock %>
+                <%#= f.select :purchase_number, [["1", 1], ["2", 2]] %>
+                <%= f.select :purchase_number, options_for_select((1..a).to_a) %>
+                <span>枚</span>
+
+                 <%= f.submit "枚数変更", class:"btn btn-primary" do %>
+                   <p class="buttonwidth">枚数変更</p>
+                 <% end %>
+              <% end %>
+　　　　　　　　<br>
+              
+
+              <%= link_to user_cart_item_path(cart_item.id), class: "btn btn-primary",method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                <p class="buttonwidth">削除</p>
+
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
-        <select name ="">
-          <option value="">1</option>
-        </select>
-        <span>枚</span>
-      </div>
+
 　　 </div>
-    <div class="cart-delete">
-      <button type="button" class="btn btn-primary">
-        <p class="buttonwidth">削除</p>
-      </button>
-    </div>
+     </div>
+ </div>
 
-
-
-    <div class="cart-item-box clearfix">
-      <%= image_tag 'sample-author5.jpg', class:"jacket" %>
-      <div class="title-contents">
-        <p class="bold">タイトル</p>
-        <%#= order.users.name %>
-        <p>title1</p>
-        <p class="bold">アーティスト名</p>
-        <%#= order.users.name %>
-        <p>ミスチル</p>
-        <p class="bold">値段</p>
-        <%#= order.cart_items %>
-        <p>3000円</p>
-        <p class="bold">ジャンル</p>
-        <p>J-pop</p>
-        <p class="bold">レーベル</p>
-        <p>avex</p>
-        <p class="bold">在庫状況</p>
-        <select name ="">
-          <option value="">1</option>
-        </select>
-        <span>枚</span>
-      </div>
-　　 </div>
-
-    <div class="cart-delete">
-      <button type="button" class="btn btn-primary">
-        <p class="buttonwidth">削除</p>
-      </button>
-    </div>
-
-
-  </div>
 
   <div class="cart-text">
-    <p>合計金額: 6000円</p>
+    <p>合計金額:</p>
+      <% sum = 0; %>
+      <% @cart_items.each do |cart_item| %>
+      <% sum += cart_item.title.price * cart_item.purchase_number %>
+      <% end %>
+　　　 <%= sum %><span> 円</span>
+
+    </p>
     <span><button type="button" class="btn btn-primary">
       <p class="buttonwidth">購入する</p></button></span>
     <br>
     <br>
     <p>送付先</p>
+    
+     <% @user = current_user %>
+     
+     <%= form_for(order) do |f| %>
+       <%= check_box :sub_post_code, @user.postal_code %>
+       <%= label_tag @user.postal_code %><br>
+       <%= label_tag @user.address %>
+
+       <%= f.submit "送信", class: "btn btn-primary" %>
+
+     <% end %>
+
     <div class="address-list">
-      <input type="radio">
-      <span>現住所<span><br>
-       <p>111-1111
-       〇〇県△△市×町1-11-1<p>
+      <!-- <input type="radio"> -->
+      <!-- <span>現住所<span><br> -->
+       <%#= current_user.postal_code %><br>
+       <%#= current_user.address %>
     </div>
+
     <div class="address-list">
       <input type="radio">
       <span>その他の配送先</span><br>
-      <p>111-1112
-       〇〇県△△市×町1-11-2
-       </p><span><button type="button" class="btn btn-primary">
+      <span><button type="button" class="btn btn-primary">
       <p class="buttonwidth">削除</p></button></span>
     </div>
+
     <div class="address-list">
       <input type="radio">
       <span>新しい配送先入力</span><br>
+      <%= form_for()
       <input type="text" value="" class="delivery-address-input" placeholder="">
     </div>
   </div>
-  
+
+
 </div>
