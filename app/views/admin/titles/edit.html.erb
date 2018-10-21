@@ -36,8 +36,7 @@
     		<% @discs.each do |disc| %>
             <table>
                 <%= f.fields_for disc do |f| %>
-                    <p>disc名</p>
-                    <%= f.text_field :disc_name, class:"form-control" %>
+                    <p>disc名:<%= f.text_field :disc_name,class:"form-control" %></p>
                 <% end %>
 
                 <tbody>

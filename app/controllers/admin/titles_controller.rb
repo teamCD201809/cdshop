@@ -2,11 +2,11 @@ class Admin::TitlesController < ApplicationController
 
 	def new
 		@title = Title.new
+		@disc = @title.discs.build
+		@song = @disc.songs.build
 		@artist = Artist.all.map{|o| [o.artist, o.id]}
 		@genre = Genre.all.map{|o| [o.genre, o.id]}
 		@label = Label.all.map{|o| [o.label, o.id]}
-		@disc = @title.discs.build
-		@song = @disc.songs.build
 	end
 
 	def create
@@ -30,16 +30,12 @@ class Admin::TitlesController < ApplicationController
 	def update
         @title = Title.find(params[:id])
         @title.update(title_params)
-        # @discs.update(disc_params)
+        # @disc = @title.discs
+        # @disc.update(disc_params)
         # @discs = Disc.where(title_id: @title)
         # @discs.update(disc_params)
         redirect_to admin_titles_path
     end
-
-
-	def find
-
-	end
 
 	def edit
 		@title = Title.find(params[:id])

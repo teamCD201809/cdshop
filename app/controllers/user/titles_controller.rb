@@ -3,6 +3,7 @@ class User::TitlesController < ApplicationController
 
 	def index
 		@titles = Title.search(params[:search])
+		#@genres = Genre.search(params[:search])
 		@cart_item = CartItem.new
 
 	end
@@ -12,10 +13,6 @@ class User::TitlesController < ApplicationController
 		@cart_item = CartItem.new
 		@discs = Disc.where(title_id: @title)
 		@songs = Song.order(:song_order)
-	end
-
-	def find
-
 	end
 
 	private
