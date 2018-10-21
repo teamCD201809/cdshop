@@ -1,4 +1,4 @@
-<main>
+<main style="text-align: center;">
   <p id="notice"><%= notice %></p>
 
   <h1>レーベル一覧</h1>
@@ -15,8 +15,9 @@
       <% @labels.each do |label| %>
         <tr>
           <td><%= label.label %></td>
-          <td><%= link_to '編集', edit_admin_label_path(label) %></td>
-          <td><%= link_to '削除', [:admin, label], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to '編集', edit_admin_label_path(label), class: "btn btn-success" %></td>
+          <td>|</td>
+          <td><%= link_to '削除', [:admin, label],class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -24,5 +25,5 @@
 
   <br>
   <%= paginate @labels %><br>
-  <%= link_to '新規登録', new_admin_label_path %>
+  <%= link_to '新規登録', new_admin_label_path,class: "btn btn-primary" %>
 </main>

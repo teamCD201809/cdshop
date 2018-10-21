@@ -1,4 +1,5 @@
-<main>
+<main style="text-align: center;">
+	
 	<p id="notice"><%= notice %></p>
 	<p>
 	<h4>登録情報</h4>
@@ -6,6 +7,6 @@
   	<%= @genre.genre %>
 	</p>
 
-	<%= link_to '編集', edit_admin_genre_path(@genre) %> |
-	<%= link_to '戻る', admin_genres_path %>
+	<%= link_to '編集', edit_admin_genre_path(@genre),class: "btn btn-success" %> |
+	<%= link_to '戻る', admin_genres_path, class: "btn btn-default" %>
 </main>

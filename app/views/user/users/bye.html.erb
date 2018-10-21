@@ -1,5 +1,10 @@
-<div class="main">
-	<h1>本当によろしいですか。</h1>
-	<a>はい</a>
-	<a>いいえ</a>
+<div class="main" style="text-align: center;">
+	<h1>本当によろしいですか</h1>
+	<p>一度、退会すると現在ログイン中のアカウントは使用できなくなります。</p>
+		<%= link_to user_title_path(@user.id), class: "btn btn-primary",method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+        	 <p class="buttonwidth">はい</p>
+        <% end %>
+     <%= link_to :user_user, class: "btn btn-primary" do %>
+      <p class="buttonwidth">いいえ</p>
+    <% end %>
 </div>
