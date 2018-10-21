@@ -94,7 +94,7 @@
             <% end %>
             <span class="header-list">/</span>
             <li class="header-list">
-              <%= link_to "🛒", user_cart_items_path %>
+              <%= link_to "🛒", user_cart_path(current_user.id) %>
             </li>
             <span class="header-list">/</span>
             <%= link_to destroy_user_session_path, method: :delete do %>

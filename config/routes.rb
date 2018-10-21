@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   	registrations: 'users/registrations'
   }
   namespace :admin do
-    get 'titles/find', to: 'titles#find'
     resources :titles
     resources :artists
     resources :cart_items
@@ -25,7 +24,6 @@ Rails.application.routes.draw do
     resources :users
   end
   namespace :user do
-    get 'titles/find', to: 'titles#find'
     resources :titles
     resources :artists
     resources :cart_items
@@ -39,6 +37,7 @@ Rails.application.routes.draw do
     resources :users
     get 'users/:id(.:format)/bye', to: 'users#bye'
   end
+
   # resources :genres
   # resources :artists
   # resources :labels
