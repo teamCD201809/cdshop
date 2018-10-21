@@ -15,8 +15,8 @@
 　<header>
     <div class="header">
       <div class="header-contents">
-      <div class="social">
-<i class="fa fa-spinner fa-4x" aria-hidden="true"></i>
+
+        <%= image_tag 'logo.png', :size =>'150x90' %>
 </div>
       <div class="searchbox">
         <% if admin_signed_in? %>
@@ -101,7 +101,7 @@
             <% end %>
             <span class="header-list">/</span>
             <li class="header-list">
-              <%= link_to "🛒", user_cart_path(current_user.id) %>
+              <%= link_to "🛒", user_cart_items_path(current_user.id) %>
             </li>
             <span class="header-list">/</span>
             <%= link_to destroy_user_session_path, method: :delete do %>

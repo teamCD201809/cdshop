@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :orders_items
     resources :songs
     resources :users
-    get 'users/:id(.:format)/bye', to: 'users#bye'
+    get 'users/:id/bye', to: 'users#bye'
   end
 
   # resources :genres

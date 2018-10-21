@@ -15,6 +15,7 @@ class User::TitlesController < ApplicationController
 		@songs = Song.order(:song_order)
 	end
 
+
 	private
   	def cart_item_params
   		params.require(:cart_item).permit(:purchase_number, :user_id, :title_id)
