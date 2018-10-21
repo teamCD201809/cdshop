@@ -21,7 +21,7 @@ end
 def destroy
     @user = User.find(params[:id])
     @user.destroy
-    
+    redirect_to user_titles_path
   end
 
   private
