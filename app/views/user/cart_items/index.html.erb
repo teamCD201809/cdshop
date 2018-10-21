@@ -1,6 +1,15 @@
 <div class="main">
   <p class="title-center">＜マイカート＞</p>
-　
+  
+
+  <%= form_for [:user, @orders_item] do |f| %>
+    <%= @orders_item.id %>
+    <%= @orders_item.order_item_purchase %>
+    <%= @orders_item.cart_item_id %>
+    <%= @orders_item.created_at %>
+  <% end %>
+
+
       <% @cart_items.each do |cart_item| %>
         <div class="cart_items">
           <div class="cart-item-box clearfix">
@@ -44,9 +53,8 @@
                  <%= f.submit "枚数変更", class:"btn btn-primary" do %>
                    <p class="buttonwidth">枚数変更</p>
                  <% end %>
-              <% end %>
+             <% end %>
 　　　　　　　　<br>
-              
 
               <%= link_to user_cart_item_path(cart_item.id), class: "btn btn-primary",method: :delete, "data-confirm" => "本当に消しますか？" do %>
                 <p class="buttonwidth">削除</p>
@@ -55,11 +63,12 @@
             </div>
           </div>
         </div>
-      <% end %>
 
-　　 </div>
-     </div>
- </div>
+    <% end %><!--一番上のcart_itemのeach終わり-->
+
+
+
+
 
 
   <div class="cart-text">
@@ -68,25 +77,29 @@
       <% @cart_items.each do |cart_item| %>
       <% sum += cart_item.title.price * cart_item.purchase_number %>
       <% end %>
+
 　　　 <%= sum %><span> 円</span>
 
-    </p>
-    <span><button type="button" class="btn btn-primary">
-      <p class="buttonwidth">購入する</p></button></span>
+
+
+    <!-- @order = current_user -->
+    <%= form_for [:user, @orders_item] do |f| %>
+      <%#= @cart_items.each do |cart_item| %>
+        <%# order_item_purchase = cart_item.title.price * cart_item.purchase_number %>
+        <%# cart_item.id = current_cart_item.id %>
+      <%# end %>
+
+
+
+
+      <span><%= f.submit "購入する", class:"btn btn-primary" %></span>
+   <% end %>
+
     <br>
     <br>
     <p>送付先</p>
-    
+
      <% @user = current_user %>
-     
-     <%= form_for(order) do |f| %>
-       <%= check_box :sub_post_code, @user.postal_code %>
-       <%= label_tag @user.postal_code %><br>
-       <%= label_tag @user.address %>
-
-       <%= f.submit "送信", class: "btn btn-primary" %>
-
-     <% end %>
 
     <div class="address-list">
       <!-- <input type="radio"> -->
@@ -102,13 +115,16 @@
       <p class="buttonwidth">削除</p></button></span>
     </div>
 
+
+
     <div class="address-list">
       <input type="radio">
       <span>新しい配送先入力</span><br>
-      <%= form_for()
+
       <input type="text" value="" class="delivery-address-input" placeholder="">
     </div>
-  </div>
+ 
+ </div>
 
 
 </div>
