@@ -19,9 +19,16 @@
 <i class="fa fa-spinner fa-4x" aria-hidden="true"></i>
 </div>
       <div class="searchbox">
-        <%= form_tag titles_path, :method => 'get' do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag '検索', :title =>nil %>
+        <% if admin_signed_in? %>
+          <%= form_tag admin_titles_path, :method => 'get' do %>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag '検索', :title =>nil %>
+          <% end %>
+        <% else %>
+          <%= form_tag user_titles_path, :method => 'get' do %>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag '検索', :title =>nil %>
+          <% end %>
         <% end %>
       </div>
       <nav class="header-nav">

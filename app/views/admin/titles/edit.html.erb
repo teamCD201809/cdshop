@@ -1,7 +1,7 @@
 <h2>管理者商品編集</h2>
 
-<div class="container"> <!-- ここを追加 -->
-    <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
+<div class="container">
+    <div class="row" style="background-color: #EEEEEE">
     	<div class="col-lg-3" style="background-color: red">
     <%= form_for ([:admin, @title]) do |f| %>
     		<div>
@@ -17,13 +17,13 @@
     		<p>タイトル</p>
             <%= f.text_field :title, class:"form-control" %>
             <p>アーティスト名</p>
-            <%= f.select :artist_id, @artist %>
+            <%= f.select :artist_id, @artist_select %>
             <p>値段</p>
             <%= f.text_field :price, class:"form-control" %>
             <p>ジャンル</p>
-            <%= f.select :genre_id, @genre %>
+            <%= f.select :genre_id, @genre_select %>
             <p>レーベル</p>
-            <%= f.select :label_id, @label %>
+            <%= f.select :label_id, @label_select %>
             <p>在庫数</p>
             <%= f.text_field :stock, class:"form-control" %>
 
@@ -31,34 +31,30 @@
             <%= f.submit "更新", class:"btn btn-primary" %>
     	</div>
 
-    	<div class="col-lg-5" style="background-color: blue">
+    	<div class="col-lg-5" style="background-color: lightblue">
             <!-- eachで繰り返す -->
-    		<p>disc1</p>
+    		<% @discs.each do |disc| %>
             <table>
+                <%= f.fields_for disc do |f| %>
+                    <p>disc名:<%= f.text_field :disc_name,class:"form-control" %></p>
+                <% end %>
+
                 <tbody>
+                <% @songs.where(disc_id: disc.id).each do |song| %>
                     <tr>
                         <th>曲順</th>
                         <th>曲名</th>
                     </tr>
                     <tr>
-                        <td>曲順テーブルから持ってくる</td>
-                        <td>曲名テーブルから持ってくる</td>
+                    <%= f.fields_for song do |f| %>
+                        <td><%= f.text_field :song_order, class:"form-control" %></td>
+                        <td><%= f.text_field :song_title, class:"form-control" %></td>
+                    <% end %>
                     </tr>
+                <% end %>
                 </tbody>
  　          </table>
-            <p>disc2</p>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>曲順</th>
-                        <th>曲名</th>
-                    </tr>
-                    <tr>
-                        <td>曲順テーブルから持ってくる</td>
-                        <td>曲名テーブルから持ってくる</td>
-                    </tr>
-                </tbody>
- 　          </table>
+            <% end %>
 
     <% end %>
 

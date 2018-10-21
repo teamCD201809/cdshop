@@ -1,7 +1,8 @@
 <h2>管理者商品一覧</h2>
+
 <% @titles.each do |title| %>
-<div class="container"> <!-- ここを追加 -->
-    <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
+<div class="container">
+    <div class="row" style="background-color: #EEEEEE">
 
     	<div class="col-lg-2" style="background-color: red">
 
@@ -17,7 +18,6 @@
                 <p>タイトル:</p>
                 <%= title.title %>
                 <p>アーティスト名:</p>
-                <!-- artistテーブルから持ってこれるように -->
                 <%= title.artist.artist %>
                 <p>値段:</p>
                 <%= title.price %>
@@ -43,5 +43,5 @@
 </div>
 <% end %>
 
-       <%= paginate @titles, class: "pagenate" %>
+<!-- paginate @titles, class: "pagenate" %> -->
 
