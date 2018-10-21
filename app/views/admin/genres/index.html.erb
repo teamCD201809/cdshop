@@ -1,8 +1,8 @@
-<main>
+<main style="text-align: center;">
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h1>ジャンル一覧</h1>
+  <h1>ジャンル一覧</h1>
 
 <table>
   <thead>
@@ -16,8 +16,9 @@
     <% @genres.each do |genre| %>
       <tr>
         <td><%= genre.genre %></td>
-        <td><%= link_to '編集', edit_admin_genre_path(genre) %></td>
-        <td><%= link_to '削除',[:admin, genre], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '編集', edit_admin_genre_path(genre), class: "btn btn-success" %></td>
+        <td>|</td>
+        <td><%= link_to '削除',[:admin, genre],class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,7 +26,7 @@
 
 <br>
 <%= paginate @genres %><br>
-<%= link_to '新規登録', new_admin_genre_path %>
+<%= link_to '新規登録', new_admin_genre_path,class: "btn btn-primary" %>
 
 
 </main>

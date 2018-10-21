@@ -1,9 +1,9 @@
-<main>
+<main style="text-align: center;">
 
 	<h1>編集ページ</h1>
 
 	<%= render 'form', artist: @artist %>
 
-	<%= link_to '登録情報確認', [:admin, @artist] %> |
-	<%= link_to '戻る', admin_artists_path %>
+	<%= link_to '登録情報確認', [:admin, @artist],class: "btn btn-info" %> |
+	<%= link_to '戻る', admin_artists_path,class: "btn btn-default" %>
 </main>
