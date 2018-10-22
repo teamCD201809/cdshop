@@ -1,55 +1,44 @@
-<main>
+<div class="main">
 <div class="history-area">
   	<p class="title-center">＜購入履歴＞</p>
-    <div class="history-box">
-      <div class="history-contents">
-        <p class="bold">購入者</p>
-        <%#= order.users.name %>
-        <p>ああああああ</p>
-        <p class="bold">購入日時</p>
-        <%#= order.users.name %>
-        <p>2018/7/5/12:05</p>
-        <p class="bold">購入内容</p>
-        <%#= order.cart_items %>
-        <p>title1 3000円</p>
-        <p>title2 3000円</p>
-        <p class="bold">総計</p>
-        <p>6000円</p>
-        <p class="bold">送付先</sp>
-        <p>111-1111</p>
-        <p>○○県××市△△町2-22-2</p>
-        <p class="bold">ステータス</p>
-        <p>出荷前 or 済み</p>
-      </div>
-　　 </div>
+    
+    <% @orders.each do |order| %>
 
     <div class="history-box">
       <div class="history-contents">
         <p class="bold">購入者</p>
-        <%#= order.users.name %>
-        <p>ああああああ</p>
-        <p class="bold">購入日</p>
-        <%#= order.users.name %>
-        <p>2018/7/5/12:05</p>
+        <%= order.user.name %><br><br>
+        <!-- コントローラで -->
+        <%#= order.orders_item.cart_item.user.id %>
+        <p class="bold">購入日時</p>
+        <%= order.created_at %><br><br>
         <p class="bold">購入内容</p>
+        <% order.orders_items.each do |orders_item| %>
+          <%= orders_item.cart_item.title.title %>
+          <%= orders_item.order_item_purchase %>円
+          <%= select :status,:name,OrdersItem.statuses.keys.to_a %>
+          <%= orders_item.status %>
+          <br>
+        <% end %>
+        <br>
+        <%# @orders_items.each do |orders_item| %>
+          <%#= orders_item.cart_item.title.title %>
+        <%# end %>
         <%#= order.cart_items %>
-        <p>title1 3000円</p>
-        <p>title2 3000円</p>
         <p class="bold">総計</p>
-        <p>6000円</p>
+        <%= order.order_purchase %>円<br><br>
         <p class="bold">送付先</p>
-        <p>111-1111</p>
-        <p>○○県××市△△町2-22-2</p>
-        <p class="bold">ステータス</p>
-        <p>出荷前 or 済み</p>
+        <%= order.sub_post_code %><br>
+        <%= order.sub_address %>
       </div>
 　　 </div>
+    <% end %>
   </div>
 
   <div class="block">
-  <button type="button" class="btn btn-primary">
+    <%= link_to :back, class: "btn btn-primary" do %>
       <p class="buttonwidth">戻る</p>
-      </button>
+    <% end %>
+  </div>
 
 </div>
-</main>

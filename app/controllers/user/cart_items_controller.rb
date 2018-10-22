@@ -10,8 +10,10 @@ class User::CartItemsController < ApplicationController
 
     def index
     	@cart_items = CartItem.where(user_id: current_user.id)
-        # @orders_item = OrdersItem.new ←こちらに戻す
-        @orders_items = OrdersItems.find(user_id: current_user.id)
+        @orders_item = OrdersItem.new
+        @orders_items = OrdersItem.all
+        @orders = Order.all
+        #@orders_items = OrdersItems.where(user_id: current_user.id)
     end
 
     def destroy
