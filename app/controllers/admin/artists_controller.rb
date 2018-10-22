@@ -1,4 +1,5 @@
 class Admin::ArtistsController < ApplicationController
+  # before_action :authenticate_admin!
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   # GET /artists

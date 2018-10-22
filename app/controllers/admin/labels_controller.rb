@@ -1,4 +1,5 @@
 class Admin::LabelsController < ApplicationController
+  # before_action :authenticate_admin!
   before_action :set_label, only: [:show, :edit, :update, :destroy]
 
   # GET /labels
