@@ -54,7 +54,7 @@ class Admin::TitlesController < ApplicationController
 
 	private
    	def title_params
- 	  	params.require(:title).permit(:title, :artist_id, :price, :genre_id, :label_id, :image, :stock, discs_attributes: [:id, :disc_name, :done, :_destroy, songs_attributes: [:id, :song_order, :song_title]])
+ 	  	params.require(:title).permit(:title, :artist_id, :price, :genre_id, :label_id, :image, :stock, discs_attributes: [:id, :disc_name, :done, :_destroy, songs_attributes: [:id, :song_order, :song_title, :audio, :done, :_destroy]])
     end
     # def disc_params
     # 	params.require(:disc).permit(:disc_name)

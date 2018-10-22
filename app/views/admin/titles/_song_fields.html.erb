@@ -4,6 +4,7 @@
         <%= f.text_field :song_order, class:"form-control" %>
         <%= f.label :song_title %>
         <%= f.text_field :song_title, class:"form-control" %>
+        <%= f.file_field :audio %>
     <%= link_to_remove_association "songを削除", f, class: 'btn btn-primary' %>
   </div>
 </div>

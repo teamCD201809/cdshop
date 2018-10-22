@@ -13,7 +13,7 @@ attachment :image
 #廣重変更
 	def self.search(search) #self.でクラスメソッドとしている
       if search
-      Title.where(['title LIKE ? OR artist LIKE ?', "%#{search}%", "%#{search}%"])
+      Title.where(['title LIKE ? OR artist LIKE ?', "%#{search}%", "%#{search}%"]).reverse_order
 
 
       #if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
