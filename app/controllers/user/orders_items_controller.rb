@@ -2,32 +2,33 @@ class User::OrdersItemsController < ApplicationController
 
 def create
     @cart_items = CartItem.where(user_id: current_user.id)
+    # 購入してないもののみを表示する
     @order = Order.new
 
-    @ordes_item_purchase = 0
+    @order.user_id = current_user.id
+    @orders_item_purchase = 0
 
+    @order.sub_post_code = current_user.postal_code
+    @order.sub_address = current_user.address
+    @order.save
+
+    sum = 0
+binding.pry
     @cart_items.each do |cart_item|
       orders_item = OrdersItem.new
+      #binding.pry
+      orders_item.order_id = @order.id
       orders_item.order_item_purchase = cart_item.title.price * cart_item.purchase_number
       orders_item.cart_item_id = cart_item.id
-
+      #binding.pry
       orders_item.save
+      #binding.pry
+      sum += orders_item.order_item_purchase
+      #binding.pry
     end
-      redirect_to user_titles_path
-end
+      binding.pry
+      @order.update(order_purchase: sum)
+      redirect_to user_cart_items_path
+   end
 
-    order.order_purchase = cart
-    order.purchase_date = cart_item.created_at
-    order.sub_post_code = current_user.postal_code
-    order.address = current_user.address
-
-
-
-
-
-
-    private
-    def orders_item_params
-        params.require(:orders_item).permit(:order_item_purchase)
-    end
 end

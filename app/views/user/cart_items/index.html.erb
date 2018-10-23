@@ -1,13 +1,26 @@
 <div class="main">
   <p class="title-center">＜マイカート＞</p>
   
+  <% @user = current_user %>
+  
+  <!-- 以下テスト用 -->
 
-  <%= form_for [:user, @orders_item] do |f| %>
-    <%= @orders_item.id %>
-    <%= @orders_item.order_item_purchase %>
-    <%= @orders_item.cart_item_id %>
-    <%= @orders_item.created_at %>
+
+  <% @user.cart_items.each do |cart_item| %>
+    <%= cart_item.title.id %>
   <% end %>
+
+
+
+
+  <%#= @orders_items.each do |orders_item| %>
+    <%#= orders_item.cart_item.user_id  %>
+    <%#= orders_item.id %>
+    <%#= orders_item.order_item_purchase %>
+    <%#= orders_item.cart_item_id %>
+    <%#= orders_item.created_at %>
+    <br>
+  <%# end %><!--テスト表示用-->
 
 
       <% @cart_items.each do |cart_item| %>
@@ -18,12 +31,6 @@
 
 
             </div>
-
-
-       <!--  <p>デバッグ用　タイトルID
-         <%= cart_item.title_id %>
-         アーティストID
-         <%= cart_item.title.artist_id %> -->
 
 
             <div class="title-contents clearfix">
@@ -45,9 +52,12 @@
 
 
               <%= form_for [:user, cart_item] do |f| %>
+                <%= cart_item.id %><!--テスト用-->
                 <% a = cart_item.title.stock %>
-                <%#= f.select :purchase_number, [["1", 1], ["2", 2]] %>
-                <%= f.select :purchase_number, options_for_select((1..a).to_a) %>
+                <%= f.select :purchase_number, options_for_select(((1..a).to_a),:selected => cart_item.purchase_number) %>
+                <%#= f.select :purchase_number, [["1",1],["2",2] ] %>
+                <!--  -->
+                <%#= cart_item.purchase_number %><!--テスト用途-->
                 <span>枚</span>
 
                  <%= f.submit "枚数変更", class:"btn btn-primary" do %>
@@ -68,9 +78,6 @@
 
 
 
-
-
-
   <div class="cart-text">
     <p>合計金額:</p>
       <% sum = 0; %>
@@ -81,25 +88,13 @@
 　　　 <%= sum %><span> 円</span>
 
 
-
-    <!-- @order = current_user -->
     <%= form_for [:user, @orders_item] do |f| %>
-      <%#= @cart_items.each do |cart_item| %>
-        <%# order_item_purchase = cart_item.title.price * cart_item.purchase_number %>
-        <%# cart_item.id = current_cart_item.id %>
-      <%# end %>
-
-
-
-
       <span><%= f.submit "購入する", class:"btn btn-primary" %></span>
-   <% end %>
+    <% end %>
 
     <br>
     <br>
     <p>送付先</p>
-
-     <% @user = current_user %>
 
     <div class="address-list">
       <!-- <input type="radio"> -->
@@ -123,8 +118,8 @@
 
       <input type="text" value="" class="delivery-address-input" placeholder="">
     </div>
- 
  </div>
+
 
 
 </div>
