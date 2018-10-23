@@ -1,8 +1,8 @@
 <h2>ユーザー商品詳細</h2>
 
-<div class="container"> <!-- ここを追加 -->
-    <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
-    	<div class="col-lg-2" style="background-color: red">
+<div class="container">
+    <div class="row" style="background-color: #EEEEEE">
+    	<div class="col-lg-1" style="background-color: red">
     	</div>
         <div class="col-lg-4" style="background-color: lightgreen">
             <div>
@@ -43,12 +43,12 @@
     </div>
 </div>
 
-<div class="container"> <!-- ここを追加 -->
-    <div class="row" style="background-color: #CCCCCC">   <!-- ここを追加 -->
-        <div class="col-lg-2" style="background-color: red">
+<div class="container">
+    <div class="row" style="background-color: #CCCCCC">
+        <div class="col-lg-1" style="background-color: red">
         </div>
     <% @discs.each do |disc| %>
-        <div class="col-lg-4" style="background-color: green">
+        <div class="col-lg-5" style="background-color: green">
             <h3><%= disc.disc_name %></h3>
             <table style="border-collapse:separate; border-spacing:5px">
                 <tbody>
@@ -62,9 +62,9 @@
                         <td><%= song.song_order %></td>
                         <td><%= song.song_title %></td>
                         <td>
-                            <button type="button" id="sampleButtonSingleToggle" class="btn btn-primary" data-toggle="button" autocomplete="off">
-                             ▶︎
-                            </button>
+                            <% if song.audio.present?  %>
+                            <!-- = audio_tag song.audio, autoplay: false, controls: true %> -->
+                            <% end %>
                         </td>
                     </tr>
                     <% end %>
@@ -73,7 +73,7 @@
         </div>
     <% end %>
 
-        <div class="col-lg-2" style="background-color: blue">
+        <div class="col-lg-1" style="background-color: blue">
             <%= link_to "戻る", root_path, class:"btn btn-primary"%>
         </div>
     </div>
