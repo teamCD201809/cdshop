@@ -3,9 +3,11 @@
   
   <% @user = current_user %>
   
+  <!-- 以下テスト用 -->
 
-  <%= @orders.each do |order| %>
-    <%= order.order_purchase %>
+
+  <% @user.cart_items.each do |cart_item| %>
+    <%= cart_item.title.id %>
   <% end %>
 
 
@@ -52,9 +54,10 @@
               <%= form_for [:user, cart_item] do |f| %>
                 <%= cart_item.id %><!--テスト用-->
                 <% a = cart_item.title.stock %>
-                <%#= f.select :purchase_number, [["1", 1], ["2", 2]] %>
-                <%= f.select :purchase_number, options_for_select((1..a).to_a) %>
-                <%= cart_item.purchase_number %><!--テスト用途-->
+                <%= f.select :purchase_number, options_for_select(((1..a).to_a),:selected => cart_item.purchase_number) %>
+                <%#= f.select :purchase_number, [["1",1],["2",2] ] %>
+                <!--  -->
+                <%#= cart_item.purchase_number %><!--テスト用途-->
                 <span>枚</span>
 
                  <%= f.submit "枚数変更", class:"btn btn-primary" do %>

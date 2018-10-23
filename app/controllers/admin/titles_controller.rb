@@ -18,7 +18,7 @@ class Admin::TitlesController < ApplicationController
 	def index
 		# @titles = Title.page(params[:page]).reverse_order
 		@titles = Title.joins(:artist).search(params[:search])
-		@cart_items = CartItem.where(user_id: current_user.id)
+		#@cart_items = CartItem.where(user_id: current_user.id)
 	end
 
 

@@ -2,7 +2,7 @@
 <div class="history-area">
   	<p class="title-center">＜購入履歴＞</p>
     
-    <% @orders.each do |order| %>
+    <%= @orders.each do |order| %>
 
     <div class="history-box">
       <div class="history-contents">
@@ -14,7 +14,7 @@
         <%= order.created_at %><br><br>
         <p class="bold">購入内容</p>
         <% order.orders_items.each do |orders_item| %>
-          <%= orders_item.cart_item.title.title %>
+          <%= orders_item.id %>
           <%= orders_item.order_item_purchase %>円
           <%= select :status,:name,OrdersItem.statuses.keys.to_a %>
           <%= orders_item.status %>

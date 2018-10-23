@@ -1,12 +1,33 @@
 class User::CartItemsController < ApplicationController
 
 	def create
-		@cart_item = CartItem.new(cart_item_params)
+		@cart_items = CartItem.where(user_id: current_user.id)
+        @cart_item = CartItem.new(cart_item_params)
         @cart_item.user_id = current_user.id
-		#@cart_item.title_id = current_title.id
-		@cart_item.save
+
+        if CartItem.exists?(title_id: @cart_item.title_id, user_id: current_user.id)
+          @cart_item_exist = CartItem.find_by(title_id: @cart_item.title_id, user_id: current_user.id)
+          @cart_item_exist.update(purchase_number: @cart_item_exist.purchase_number + @cart_item.purchase_number)
+          else
+            @cart_item.save
+        end
+
+        #sum = 0
+
+       # @cart_items.each do |cart_item_exist|
+        #  if cart_item_exist.title_id == @cart_item.title_id
+         #   sum = cart_item_exist.purchase_number + cart_item.purchase_number
+          #  @cart_item.destroy
+           # @cart_item_exist.update(purchase_number: sum)
+            #  else
+
+           #end
+        #end
 		redirect_to user_titles_path
 	end
+
+
+
 
     def index
     	@cart_items = CartItem.where(user_id: current_user.id)
