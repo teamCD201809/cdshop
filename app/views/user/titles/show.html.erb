@@ -1,7 +1,7 @@
 <h2>ユーザー商品詳細</h2>
 
-<div class="container"> <!-- ここを追加 -->
-    <div class="row" style="background-color: #EEEEEE">   <!-- ここを追加 -->
+<div class="container">
+    <div class="row" style="background-color: #EEEEEE">
     	<div class="col-lg-1" style="background-color: red">
     	</div>
         <div class="col-lg-4" style="background-color: lightgreen">
@@ -43,8 +43,8 @@
     </div>
 </div>
 
-<div class="container"> <!-- ここを追加 -->
-    <div class="row" style="background-color: #CCCCCC">   <!-- ここを追加 -->
+<div class="container">
+    <div class="row" style="background-color: #CCCCCC">
         <div class="col-lg-1" style="background-color: red">
         </div>
     <% @discs.each do |disc| %>
@@ -63,7 +63,7 @@
                         <td><%= song.song_title %></td>
                         <td>
                             <% if song.audio.present?  %>
-                            <%= audio_tag song.audio, autoplay: false, controls: true %>
+                            <!-- = audio_tag song.audio, autoplay: false, controls: true %> -->
                             <% end %>
                         </td>
                     </tr>

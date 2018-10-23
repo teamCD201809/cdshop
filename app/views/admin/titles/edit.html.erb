@@ -2,38 +2,40 @@
 
 <div class="container">
     <div class="row" style="background-color: #EEEEEE">
-    	<div class="col-lg-3" style="background-color: red">
-    <%= form_for ([:admin, @title]) do |f| %>
-    		<div>
-                <p>
-                    画像
-                </p>
-    			<%= f.attachment_field :image %>
-                <%= attachment_image_tag @title, :image, :fill, 50, 50 %>
-    		</div>
 
-    	</div>
-    	<div class="col-lg-4" style="background-color: green">
-    		<p>タイトル</p>
+
+<%= form_for([:admin, @title]) do |f| %>
+        <div class="col-lg-4" style="background-color: green">
+            <p>CDジャケット:</p>
+            <%= f.attachment_field :image %>
+            <p>タイトル:</p>
             <%= f.text_field :title, class:"form-control" %>
-            <p>アーティスト名</p>
-            <%= f.select :artist_id, @artist_select %>
-            <p>値段</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><p>アーティスト名:</p></td>
+                        <td><%= f.select :artist_id, @artist_select %></td>
+                    </tr>
+                    <tr>
+                        <td><p>ジャンル名:</p></td>
+                        <td><%= f.select :genre_id, @genre_select %></td>
+                    </tr>
+                    <tr>
+                        <td><p>レーベル名:</p></td>
+                        <td><%= f.select :label_id, @label_select %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- アーティストテーブルから名前を表示して、artist_idを登録 -->
+            <p>値段:</p>
             <%= f.text_field :price, class:"form-control" %>
-            <p>ジャンル</p>
-            <%= f.select :genre_id, @genre_select %>
-            <p>レーベル</p>
-            <%= f.select :label_id, @label_select %>
-            <p>在庫数</p>
+            <p>在庫数:</p>
             <%= f.text_field :stock, class:"form-control" %>
-
             <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
             <%= f.submit "更新", class:"btn btn-primary" %>
-    	</div>
-
-    	<div class="col-lg-5" style="background-color: lightblue">
-            <!-- eachで繰り返す -->
-    		<% @discs.each do |disc| %>
+        </div>
+        <div class="col-lg-8" style="background-color: blue">
+            <% @discs.each do |disc| %>
             <table>
                 <%= f.fields_for disc do |f| %>
                     <p>disc名:<%= f.text_field :disc_name,class:"form-control" %></p>
@@ -55,8 +57,63 @@
                 </tbody>
  　          </table>
             <% end %>
-
-    <% end %>
+        </div>
+<% end %>
+    <!-- %= form_for ([:admin, @title]) do |f| %>
+    		<div>
+                <p>
+                    ジャケット画像
+                </p>
+    			%= f.attachment_field :image %>
+                %= attachment_image_tag @title, :image, :fill, 50, 50 %>
+    		</div>
 
     	</div>
+    	<div class="col-lg-4" style="background-color: green">
+    		<p>タイトル</p>
+            %= f.text_field :title, class:"form-control" %>
+            <p>アーティスト名</p>
+            %= f.select :artist_id, @artist_select %>
+            <p>値段</p>
+            %= f.text_field :price, class:"form-control" %>
+            <p>ジャンル</p>
+            %= f.select :genre_id, @genre_select %>
+            <p>レーベル</p>
+            %= f.select :label_id, @label_select %>
+            <p>在庫数</p>
+            %= f.text_field :stock, class:"form-control" %>
+
+            %= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
+            %= f.submit "更新", class:"btn btn-primary" %>
+    	</div>
+
+    	<div class="col-lg-5" style="background-color: lightblue">
+    		% @discs.each do |disc| %>
+            <table>
+                %= f.fields_for disc do |f| %>
+                    <p>disc名:%= f.text_field :disc_name,class:"form-control" %></p>
+                % end %>
+
+                <tbody>
+                % @songs.where(disc_id: disc.id).each do |song| %>
+                    <tr>
+                        <th>曲順</th>
+                        <th>曲名</th>
+                    </tr>
+                    <tr>
+                    %= f.fields_for song do |f| %>
+                        <td>%= f.text_field :song_order, class:"form-control" %></td>
+                        <td>%= f.text_field :song_title, class:"form-control" %></td>
+                    % end %>
+                    </tr>
+                % end %>
+                </tbody>
+ 　          </table>
+            % end %>
+
+    % end %>
+ -->
+        </div>
+    </div>
+</div>
 

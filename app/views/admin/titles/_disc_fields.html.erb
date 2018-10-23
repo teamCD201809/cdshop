@@ -1,12 +1,18 @@
 <div class="nested-fields well well-compact">
     <div class="form-group">
-	    <%= f.label :disc_name %>
-		<%= f.text_field :disc_name %>
-		<%= link_to_remove_association "discを削除", f, class: 'btn btn-primary' %>
+    	<table>
+    		<tbody>
+    			<tr>
+    				<td><%= f.label :disc_name %></td>
+    				<td style="width:150px"><%= f.text_field :disc_name, class:"form-control" %></td>
+    				<td><%= link_to_remove_association "discを削除", f, class: 'btn btn-primary' %></td>
+    			</tr>
+    		</tbody>
+    	</table>
 	</div>
 
 	<div class="songs">
-		<%= f.fields_for ([:admin, @song]) do |song| %>
+		<%= f.fields_for :songs do |song| %>
 	        <%= render 'song_fields', f: song %>
 	    <% end %>
 	    <div class="links">

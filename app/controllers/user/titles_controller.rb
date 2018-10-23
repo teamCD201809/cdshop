@@ -2,8 +2,7 @@ class User::TitlesController < ApplicationController
 #before_action :authenticate_user!
 
 	def index
-		# @titles = Title.page(params[:page]).reverse_order
-		@titles = Title.joins(:artist).search(params[:search])
+		@titles = Title.joins(:artist).search(params[:search]).page(params[:page])
 		@cart_item = CartItem.new
 
 	end
