@@ -2,11 +2,9 @@ class Admin::TitlesController < ApplicationController
 
 	def new
 		@title = Title.new
-		@disc = @title.discs.build
-		@song = @disc.songs.build
-		@artist = Artist.all.map{|o| [o.artist, o.id]}
-		@genre = Genre.all.map{|o| [o.genre, o.id]}
-		@label = Label.all.map{|o| [o.label, o.id]}
+		@artist_select = Artist.all.map{|o| [o.artist, o.id]}
+		@genre_select = Genre.all.map{|o| [o.genre, o.id]}
+		@label_select = Label.all.map{|o| [o.label, o.id]}
 	end
 
 	def create
@@ -16,9 +14,7 @@ class Admin::TitlesController < ApplicationController
 	end
 
 	def index
-		# @titles = Title.page(params[:page]).reverse_order
-		@titles = Title.joins(:artist).search(params[:search])
-		#@cart_items = CartItem.where(user_id: current_user.id)
+
 	end
 
 
@@ -30,6 +26,10 @@ class Admin::TitlesController < ApplicationController
 	def update
         @title = Title.find(params[:id])
         @title.update(title_params)
+        # @discs = Disc.where(title_id: @title)
+        # @discs.each do |disc|
+        # 	disc.update(disc_params)
+        # end
         # @disc = @title.discs
         # @disc.update(disc_params)
         # @discs = Disc.where(title_id: @title)
@@ -54,9 +54,10 @@ class Admin::TitlesController < ApplicationController
 
 	private
    	def title_params
- 	  	params.require(:title).permit(:title, :artist_id, :price, :genre_id, :label_id, :image, :stock, discs_attributes: [:id, :disc_name, :done, :_destroy, songs_attributes: [:id, :song_order, :song_title]])
+   		# params.require(:title).permit(:title, :artist_id, :price, :genre_id, :label_id, :image, :stock, discs_attributes: [:id, :disc_name, :done, :_destroy], songs_attributes: [:id, :song_order, :song_title, :audio, :done, :_destroy])
+ 	  	params.require(:title).permit(:title, :artist_id, :price, :genre_id, :label_id, :image, :stock, discs_attributes: [:id, :disc_name, :done, :_destroy, songs_attributes: [:id, :song_order, :song_title, :audio, :_destroy]])
     end
-    # def disc_params
-    # 	params.require(:disc).permit(:disc_name)
-    # end
+    def disc_params
+    	params.require(:disc).permit(discs_attributes: [:disc_name])
+    end
 end
