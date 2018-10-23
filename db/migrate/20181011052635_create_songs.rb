@@ -4,6 +4,7 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.integer :disc_id
       t.integer :song_order
       t.string :song_title
+      t.string :audio
 
       t.timestamps
     end
