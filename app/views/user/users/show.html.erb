@@ -70,8 +70,8 @@
         <p class="bold">購入日時</p>
         <%= order.created_at %><br><br>
         <p class="bold">購入内容</p>
-        <%= order.orders_items.each do |orders_item| %>
-          <%= orders_item.cart_item_id %>
+        <% order.orders_items.each do |orders_item| %>
+          <%= orders_item.cart_item.title.title %>
           <%= orders_item.order_item_purchase %>円
           <%#= select :status,:name,OrdersItem.statuses.keys.to_a %>
           <%= orders_item.status %>

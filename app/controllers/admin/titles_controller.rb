@@ -14,6 +14,7 @@ class Admin::TitlesController < ApplicationController
 	end
 
 	def index
+
 		@titles = Title.joins(:artist).search(params[:search]).page(params[:page])
 
 	end

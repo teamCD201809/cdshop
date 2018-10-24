@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_10_22_052105) do
 
   create_table "admins", force: :cascade do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_052105) do
     t.integer "title_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "has_orders_items", default: false, null: false
   end
 
   create_table "delivery_addresses", force: :cascade do |t|
