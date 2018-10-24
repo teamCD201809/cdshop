@@ -16,7 +16,7 @@ accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
       Title.where(['title LIKE ? OR artist LIKE ?', "%#{search}%", "%#{search}%"]).reverse_order
 
     	else
-      	Title.all.reverse_order #表示。
+      	Title.all.reverse_order
     	end
 	end
 
