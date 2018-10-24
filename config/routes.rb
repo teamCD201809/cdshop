@@ -24,23 +24,23 @@ Rails.application.routes.draw do
     resources :users
   end
   namespace :user do
-    resources :titles
-    resources :artists
+    resources :titles, only: [:index, :show]
+    #resources :artists
     resources :cart_items
     resources :delivery_addresses
-    resources :discs
-    resources :genres
-    resources :labels
+    #resources :discs
+    #resources :genres
+    #resources :labels
     resources :orders
     resources :orders_items
-    resources :songs
-    resources :users
+    #resources :songs
+    resources :users, only: [:show, :edit, :update]
     get 'users/:id/bye', to: 'users#bye'
   end
 
   # resources :genres
   # resources :artists
   # resources :labels
-  resources :titles
+  #resources :titles
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

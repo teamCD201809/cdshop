@@ -1,0 +1,40 @@
+<%= form_for([:admin, title]) do |f| %>
+        <div class="col-lg-4" style="background-color: green">
+            <p>CDジャケット:</p>
+            <%= f.attachment_field :image %>
+    		<p>タイトル:</p>
+            <%= f.text_field :title, class:"form-control" %>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><p>アーティスト名:</p></td>
+                        <td><%= f.select :artist_id, @artist_select %></td>
+                    </tr>
+                    <tr>
+                        <td><p>ジャンル名:</p></td>
+                        <td><%= f.select :genre_id, @genre_select %></td>
+                    </tr>
+                    <tr>
+                        <td><p>レーベル名:</p></td>
+                        <td><%= f.select :label_id, @label_select %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>値段:</p>
+            <%= f.text_field :price, class:"form-control" %>
+            <p>在庫数:</p>
+            <%= f.text_field :stock, class:"form-control" %>
+            <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
+            <%= f.submit "更新", class:"btn btn-primary" %>
+    	</div>
+        <div class="col-lg-8" style="background-color: blue">
+            <div id="discs">
+                <%= f.fields_for :discs do |disc| %>
+                    <%= render 'disc_fields', f: disc %>
+                <% end %>
+            <div id="links">
+                <%= link_to_add_association 'discを追加', f,:discs, class: 'btn btn-primary' %>
+            </div>
+        </div>
+    </div>
+<% end %>
