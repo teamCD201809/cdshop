@@ -14,8 +14,9 @@ class Admin::TitlesController < ApplicationController
 	end
 
 	def index
-       @titles = Title.joins(:artist).search(params[:search]).page(params[:page])
-	   @cart_items = CartItem.where(user_id: current_user.id)
+
+		@titles = Title.joins(:artist).search(params[:search]).page(params[:page])
+
 	end
 
 
