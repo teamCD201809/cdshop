@@ -1,11 +1,11 @@
 class User::CartItemsController < ApplicationController
 
 	def create
-		@cart_items = CartItem.where(user_id: current_user.id)
+     		@cart_items = CartItem.where(has_orders_items: false, user_id: current_user.id)
         @cart_item = CartItem.new(cart_item_params)
         @cart_item.user_id = current_user.id
 
-        if CartItem.exists?(title_id: @cart_item.title_id, user_id: current_user.id)
+        if CartItem.exists?(title_id: @cart_item.title_id, user_id: current_user.id, has_orders_items: false)
           @cart_item_exist = CartItem.find_by(title_id: @cart_item.title_id, user_id: current_user.id)
           @cart_item_exist.update(purchase_number: @cart_item_exist.purchase_number + @cart_item.purchase_number)
           else
@@ -31,7 +31,25 @@ class User::CartItemsController < ApplicationController
 
 
     def index
-    	@cart_items = CartItem.where(user_id: current_user.id)
+
+      #@cart_items = CartItem.where(user_id: current_user)
+      #@cart_items = CartItem.where(user_id: current_user.id).left_joins(orders_items = nil)
+      #@cart_items = CartItem.left_joins(:order_item).select("*").where("order_items.id is null")
+      #@cart_items =CartItem.where(user_id: current_user.id)
+    	#@cart_items = CartItem.joins().where("(user_id = ?) AND (orders_items.id = ?)", current_user, nil)
+
+      #@cart_items = CartItem.joins("LEFT OUTER JOIN orders_items ON cart_items.id = orders_items.cart_item_id").where("(orders_items.id = ?)", nil)
+       # @cart_items = CartItem.joins("LEFT OUTER JOIN orders_items ON cart_items.id = orders_items.cart_item_id").where("(user_id = ?), (orders_items.id = ?)", current_user.id, nil)
+
+       #@cart_items = CartItem.where("(orders_items.id = ?)", nil)
+
+      # AND (orders_items.id = ?)", current_user, nil
+
+      #@cart_items = CartItem.where(id: OrdersItem.select(:cart_item_id).group(:cart_item_id).having("count(cart_item_id) = ?", 0) );
+
+
+        @cart_items = CartItem.where(has_orders_items: false, user_id: current_user.id)
+
         @orders_item = OrdersItem.new
         @orders_items = OrdersItem.all
         @orders = Order.all

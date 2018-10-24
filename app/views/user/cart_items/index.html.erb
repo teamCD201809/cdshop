@@ -24,6 +24,7 @@
 
 
       <% @cart_items.each do |cart_item| %>
+      <%= @cart_items %>
         <div class="cart_items">
           <div class="cart-item-box clearfix">
             <div class="jacket-box">
@@ -52,7 +53,7 @@
 
 
               <%= form_for [:user, cart_item] do |f| %>
-                <%= cart_item.id %><!--テスト用-->
+                <%= cart_item.purchase_number %><!--テスト用-->
                 <% a = cart_item.title.stock %>
                 <%= f.select :purchase_number, options_for_select(((1..a).to_a),:selected => cart_item.purchase_number) %>
                 <%#= f.select :purchase_number, [["1",1],["2",2] ] %>
