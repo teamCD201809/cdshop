@@ -15,7 +15,6 @@ class Admin::TitlesController < ApplicationController
 
 	def index
 		@titles = Title.joins(:artist).search(params[:search]).page(params[:page])
-		@cart_items = CartItem.where(user_id: current_user.id)
 	end
 
 	def update
