@@ -1,28 +1,7 @@
 <div class="main">
   <p class="title-center">＜マイカート＞</p>
-  
+
   <% @user = current_user %>
-  
-  <!-- 以下テスト用 -->
-
-
-  <% @user.cart_items.each do |cart_item| %>
-    <%= cart_item.title.id %>
-  <% end %>
-
-
-
-
-  <%#= @orders_items.each do |orders_item| %>
-    <%#= orders_item.cart_item.user_id  %>
-    <%#= orders_item.id %>
-    <%#= orders_item.order_item_purchase %>
-    <%#= orders_item.cart_item_id %>
-    <%#= orders_item.created_at %>
-    <br>
-  <%# end %><!--テスト表示用-->
-
-
       <% @cart_items.each do |cart_item| %>
       <%= @cart_items %>
         <div class="cart_items">
@@ -53,7 +32,6 @@
 
 
               <%= form_for [:user, cart_item] do |f| %>
-                <%= cart_item.purchase_number %><!--テスト用-->
                 <% a = cart_item.title.stock %>
                 <%= f.select :purchase_number, options_for_select(((1..a).to_a),:selected => cart_item.purchase_number) %>
                 <%#= f.select :purchase_number, [["1",1],["2",2] ] %>
@@ -88,6 +66,68 @@
 
 　　　 <%= sum %><span> 円</span>
 
+  <p>送付先</p>
+
+    <div class="address-list">
+      <現住所><br>
+      
+
+     
+
+
+        <%= current_user.postal_code %><br>
+        <%= current_user.address %>
+        
+      </label>
+    </div><br>
+
+    <div class="address-list">
+      <span><その他の配送先></span><br>
+        
+      <%= form_for([:user, @order]) do |f| %>
+        <% @delivery_addresses.each do |delivery_address| %>
+           <%= f.radio_button :sub_post_code, delivery_address.delivery_address_postal_code %>
+           <% binding.pry %>
+           <%= @order.sub_address = delivery_address.delivery_address %><br>
+           <%#= i.delivery_address %><br>
+        <% end %>
+        <%= f.submit "a"%>
+      <% end %>
+
+
+
+          <%#= delivery_address.delivery_address_postal_code %><br>
+          <%#= delivery_address.delivery_address %>
+      <span><button type="button" class="btn btn-primary">
+      <p class="buttonwidth">削除</p></button></span><br><br>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="address-list">
+      <!-- <input type="radio"> -->
+      <span>新しい配送先入力</span><br>
+
+      <%= form_for [:user, @delivery_address] do |f| %>
+        <郵便番号><br>
+        <%= f.text_field :delivery_address_postal_code %><br>
+        <住所><br>
+        <%= f.text_field :delivery_address %>
+        <%= f.submit "配送先登録" %>
+      <% end %>
+       <!-- <input type="text" value="" class="delivery-address-input" placeholder=""> -->
+    </div>
+
+
 
     <%= form_for [:user, @orders_item] do |f| %>
       <span><%= f.submit "購入する", class:"btn btn-primary" %></span>
@@ -95,31 +135,6 @@
 
     <br>
     <br>
-    <p>送付先</p>
-
-    <div class="address-list">
-      <!-- <input type="radio"> -->
-      <!-- <span>現住所<span><br> -->
-       <%#= current_user.postal_code %><br>
-       <%#= current_user.address %>
-    </div>
-
-    <div class="address-list">
-      <input type="radio">
-      <span>その他の配送先</span><br>
-      <span><button type="button" class="btn btn-primary">
-      <p class="buttonwidth">削除</p></button></span>
-    </div>
-
-
-
-    <div class="address-list">
-      <input type="radio">
-      <span>新しい配送先入力</span><br>
-
-      <input type="text" value="" class="delivery-address-input" placeholder="">
-    </div>
- </div>
 
 
 

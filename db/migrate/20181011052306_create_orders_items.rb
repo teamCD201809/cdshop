@@ -4,7 +4,7 @@ class CreateOrdersItems < ActiveRecord::Migration[5.2]
       t.integer :order_item_purchase
       t.integer :cart_item_id
       t.integer :order_id
-      t.integer :status
+      t.integer :status,default: 0, null: false
 
       t.timestamps
     end

@@ -1,12 +1,12 @@
 class User::OrdersItemsController < ApplicationController
 
 def create
-    @cart_items = CartItem.where(user_id: current_user.id)
-    # 購入してないもののみを表示する
-    @order = Order.new
+    @cart_items = CartItem.where(user_id: current_user, has_orders_items: false)
+    @order = Order.new(order_params)
 
     @order.user_id = current_user.id
     @orders_item_purchase = 0
+
 
     @order.sub_post_code = current_user.postal_code
     @order.sub_address = current_user.address
@@ -22,10 +22,13 @@ def create
       cart_item.update(has_orders_items: true)
       sum += orders_item.order_item_purchase
     end
-      binding.pry
       @order.update(order_purchase: sum)
-      
-      redirect_to user_cart_items_path
+      redirect_to user_titles_path
    end
+# 10/25以下テスト用に作成
+   private
+    def order_params
+      params.require(:order).permit(:sub_post_code, :sub_address)
+    end
 
 end
