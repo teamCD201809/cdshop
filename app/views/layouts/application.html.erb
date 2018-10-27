@@ -99,9 +99,13 @@
                 <%= current_user.name %>
               </li>
             <% end %>
+             <span class="header-list">/</span>
+            <li class="header-list">
+              <%= link_to "商品一覧", user_titles_path %>
+            </li>
             <span class="header-list">/</span>
             <li class="header-list">
-              <%= link_to "🛒", user_cart_items_path(current_user.id) %>
+              <%= link_to "マイカート", user_cart_items_path(current_user.id) %>
             </li>
             <span class="header-list">/</span>
             <%= link_to destroy_user_session_path, method: :delete do %>

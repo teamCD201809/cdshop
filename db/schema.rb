@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2018_10_26_061452) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -87,9 +88,9 @@
     t.integer "disc_id"
     t.integer "song_order"
     t.string "song_title"
+    t.string "audio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "audio"
   end
 
   create_table "titles", force: :cascade do |t|
