@@ -1,19 +1,12 @@
-<h2>管理者商品一覧</h2>
-
 <% @titles.each do |title| %>
-<div class="container">
+<div class="container main">
     <div class="row" style="background-color: #EEEEEE">
-
-    	<div class="col-lg-2" style="background-color: red">
-
-
-    	</div>
-    	<div class="col-lg-4" style="background-color: lightgreen">
+    	<div class="col-lg-4">
             <div>
                <%= attachment_image_tag title, :image, :fill, 300, 300 %>
             </div>
         </div>
-        <div class="col-lg-2" style="background-color: green">
+        <div class="col-lg-2">
             <div>
                 <p>タイトル:</p>
                 <%= title.title %>
@@ -35,12 +28,12 @@
                 <%= title.stock %>
             </div>
     	</div>
-    	<div class="col-lg-3" style="background-color: blue">
+    	<div class="col-lg-3">
             <%= link_to "編集", edit_admin_title_path(title.id), class:"btn btn-primary" %><br>
             <%= link_to "削除", admin_title_path(title.id), method: :delete, class:"btn btn-primary" %>
         </div>
 	</div>
-</div>
+</div><br>
 <% end %>
     <%= paginate @titles, class: "pagenate" %>
 

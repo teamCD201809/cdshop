@@ -1,15 +1,13 @@
-<h2>ユーザー商品詳細</h2>
-
-<div class="container">
-    <div class="row" style="background-color: #EEEEEE">
-    	<div class="col-lg-1" style="background-color: red">
+<div class="container main">
+    <div class="row"  style="background-color: #EEEEEE">
+    	<div class="col-lg-1">
     	</div>
-        <div class="col-lg-4" style="background-color: lightgreen">
+        <div class="col-lg-4">
             <div>
                <%= attachment_image_tag @title, :image, :fill, 300, 300 %>
             </div>
         </div>
-        <div class="col-lg-2" style="background-color: green">
+        <div class="col-lg-2">
             <div>
                 <p>タイトル:</p>
                 <%= @title.title %>
@@ -29,7 +27,7 @@
                 <% end %>
             </div>
         </div>
-        <div class="col-lg-2" style="background-color: orange">
+        <div class="col-lg-2">
         <%= form_for([:user, @cart_item]) do |f| %>
             <%= f.text_field :purchase_number %>
             <%= f.hidden_field :title_id, value: @title.id %>
@@ -37,20 +35,20 @@
         <% end %>
 
         </div>
-    	<div class="col-lg-2" style="background-color: blue">
+    	<div class="col-lg-2">
             <%= link_to "カート詳細へ", user_cart_items_path, class:"btn btn-primary"%>
     	</div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row" style="background-color: #CCCCCC">
-        <div class="col-lg-1" style="background-color: red">
+<div class="container main">
+    <div class="row" style="background-color: #EEEEEE">
+        <div class="col-lg-1">
         </div>
     <% @discs.each do |disc| %>
-        <div class="col-lg-5" style="background-color: green">
+        <div class="col-lg-5">
             <h3><%= disc.disc_name %></h3>
-            <table style="border-collapse:separate; border-spacing:5px">
+            <table style="border-collapse:separate; border-spacing:20px">
                 <tbody>
                     <tr>
                         <th>曲順</th>
@@ -73,7 +71,7 @@
         </div>
     <% end %>
 
-        <div class="col-lg-1" style="background-color: blue">
+        <div class="col-lg-1">
             <%= link_to "戻る", root_path, class:"btn btn-primary"%>
         </div>
     </div>
