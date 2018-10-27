@@ -8,6 +8,12 @@ class User::DeliveryAddressesController < ApplicationController
     end
   end
 
+  #def destroy
+   # delivery_address = DeliveryAddress.find(params[:id])
+   # delivery_address.destroy
+   # redirect_to user_cart_items_path
+  #end
+
   private
   def delivery_address_params
       params.require(:delivery_address).permit(:delivery_address_postal_code, :delivery_address, :user_id)

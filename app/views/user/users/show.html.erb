@@ -85,7 +85,11 @@
         <%= order.sub_address %>
       </div>
 　　 </div>
-    <% end %>
-  </div>
 
+    <% end %>
+    <div id="pagination">
+    <%= paginate @orders, class:"pagenate" %>
+    </div>
+  
+  </div>
 </div>
