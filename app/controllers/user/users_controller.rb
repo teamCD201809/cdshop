@@ -5,7 +5,7 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = Order.where(user_id: current_user.id)
+    @orders = Order.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def update

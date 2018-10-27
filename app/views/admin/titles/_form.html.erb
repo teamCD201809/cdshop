@@ -1,9 +1,15 @@
+
+
 <%= form_for([:admin, title]) do |f| %>
         <div class="col-lg-4" style="background-color: green">
-            <p>CDジャケット:</p>
+            <p class="test">CDジャケット:</p>
             <%= f.attachment_field :image %>
     		<p>タイトル:</p>
-            <%= f.text_field :title, class:"form-control" %>
+            <!-- <span style="color:darkred">Error</span> -->
+            <!-- <div class="form-group has-error has-feedback"> -->
+                <%= f.text_field :title,type:"text", class:"form-control require" %>
+<!--                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+            </div> -->
             <table>
                 <tbody>
                     <tr>
@@ -21,9 +27,9 @@
                 </tbody>
             </table>
             <p>値段:</p>
-            <%= f.text_field :price, class:"form-control" %>
+            <%= f.text_field :price,type:"number", class:"form-control" %>
             <p>在庫数:</p>
-            <%= f.text_field :stock, class:"form-control" %>
+            <%= f.text_field :stock,type:"number", class:"form-control" %>
             <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
             <%= f.submit "登録", class:"btn btn-primary" %>
     	</div>
@@ -38,3 +44,26 @@
         </div>
     </div>
 <% end %>
+            <script>
+                // $(".test").on('click', function(){
+                //     $(".test").css("color","blue")
+                // });
+                $('.require')
+                .on('blur', function(){
+                    let error;
+                    let value = $(this).val();
+                    let title = "test"
+                    if(value == "")
+                    {
+                        error = true;
+                    }
+                    if(error)
+                    {
+                        $(this).after(
+                            '<span style ="color:red" class = "error-info">タイトルを入力してください</span>');
+                    }
+                })
+                .on('click', function(){
+                    $('.error-info').hide();
+                });
+            </script>
