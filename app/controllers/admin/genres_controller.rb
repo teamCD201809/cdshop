@@ -1,7 +1,7 @@
 class Admin::GenresController < ApplicationController
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
-
-  # GET /genres
+  before_action :authenticate_admin!
+  # GET /genreenres
   # GET /genres.json
   def index
     @genres = Genre.all.order('created_at desc')
