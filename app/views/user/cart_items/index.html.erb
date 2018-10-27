@@ -89,15 +89,12 @@
 
 
     <%= form_for [:user, @orders_item] do |f| %>
-      
         <%#= form_tag(user_orders_path, method: :post) %>
           <現住所><br>
-          <%= radio_button "c", "d", current_user.id, {} %>
+            <%= radio_button "c", "d", "b", {} %>
             <%= current_user.postal_code %><br>
             <%= current_user.address %><br><br>
-             
-          <現住所ではない場所に送付する><br>
-　　　　　　　<%= radio_button "g", "h", current_user.id, {} %><br><br>
+
 
           <現住所以外の住所に送付する><br><br>
       <% @delivery_addresses.each do |delivery_address| %>
