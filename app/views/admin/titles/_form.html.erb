@@ -1,7 +1,7 @@
 
 
 <%= form_for([:admin, title]) do |f| %>
-        <div class="col-lg-4" style="background-color: green">
+        <div class="col-lg-4">
             <p>CDジャケット:</p>
             <%= f.attachment_field :image %>
 
@@ -35,7 +35,7 @@
             <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
             <%= f.submit "登録", class:"btn btn-primary" %>
     	</div>
-        <div class="col-lg-8" style="background-color: blue">
+        <div class="col-lg-8">
             <div id="discs">
                 <%= f.fields_for :discs do |disc| %>
                     <%= render 'disc_fields', f: disc %>
