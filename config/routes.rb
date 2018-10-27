@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :orders_items
     #resources :songs
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update, :destroy]
     get 'users/:id/bye', to: 'users#bye'
   end
 
