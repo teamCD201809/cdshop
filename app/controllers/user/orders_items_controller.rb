@@ -2,40 +2,26 @@ class User::OrdersItemsController < ApplicationController
 
 def create
     @cart_items = CartItem.where(user_id: current_user, has_orders_items: false)
-    @order = Order.new#(order_params)
-
-    @user1 = User.find(params[:e][:f])
-    @user2 = User.find(params[:g][:h])
-
-    if @user2.blank?
-      @order.sub_post_code = current_user.postal_code
-      @order.sub_address = current_user.address
-    else
-      a = DeliveryAddress.find(params[:c][:d])
-      binding.pry
-      @order.sub_post_code = a.delivery_address_postal_code
-      binding.pry
-      @order.sub_address = a.delivery_address
-    end
-
-    if @user1.blank?
-      a = DeliveryAddress.find(params[:c][:d])
-      binding.pry
-      @order.sub_post_code = a.delivery_address_postal_code
-      binding.pry
-      @order.sub_address = a.delivery_address
-    else
-      @order.sub_post_code = current_user.postal_code
-      @order.sub_address = current_user.address
-    end
-
-
-
+    @order = Order.new
     @order.user_id = current_user.id
+
+    flag = params[:c][:d]
     binding.pry
-    #@orders_item_purchase = 0
-   # @order.sub_post_code = current_user.postal_code
-    #@order.sub_address = current_user.address
+    if flag == "b"
+      @order.sub_post_code = current_user.postal_code
+      binding.pry
+      @order.sub_address = current_user.address
+    else
+      binding.pry
+      a = DeliveryAddress.find(params[:c][:d])
+      binding.pry
+      @order.sub_post_code = a.delivery_address_postal_code
+      binding.pry
+      @order.sub_address = a.delivery_address
+    end
+
+    binding.pry
+
     @order.save
 
     sum = 0
@@ -54,10 +40,4 @@ def create
       redirect_to user_titles_path
    end
 # 10/25以下テスト用に作成
-   private
-    def order_params
-      params.require(:order).permit(:sub_post_code, :sub_address)
-    end
-
 end
-

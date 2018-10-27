@@ -5,17 +5,21 @@ class User::CartItemsController < ApplicationController
         @cart_item = CartItem.new(cart_item_params)
         @cart_item.user_id = current_user.id
         if @cart_item.title.stock != 0
+          if @cart_item.title.stock >= @cart_item.purchase_number
+          
           if CartItem.exists?(title_id: @cart_item.title_id, user_id: current_user.id, has_orders_items: false)
-            @cart_item_exist = CartItem.find_by(title_id: @cart_item.title_id, user_id: current_user.id)
-            if @cart_item_exist.update(purchase_number: @cart_item_exist.purchase_number + @cart_item.purchase_number)
-              stock_after_purchase = @cart_item_exist.title.stock - @cart_item_exist.purchase_number
-              @cart_item_exist.title.update(stock: stock_after_purchase)
-            end
+            @cart_item_exist = CartItem.find_by(title_id: @cart_item.title_id, user_id: current_user.id, has_orders_items: false)
+            @cart_item_exist.update(purchase_number: @cart_item_exist.purchase_number + @cart_item.purchase_number)
+            stock_after_purchase = @cart_item_exist.title.stock - @cart_item_exist.purchase_number
+            @cart_item_exist.title.update(stock: stock_after_purchase)
+  
           else
             @cart_item.save
+            redirect_to user_titles_path
           end
         else
         redirect_to user_titles_path
+        end
       end
 	end
       #sum = 0
@@ -33,7 +37,6 @@ class User::CartItemsController < ApplicationController
 
     def index
         @cart_items = CartItem.where(has_orders_items: false, user_id: current_user.id)
-
         @orders_item = OrdersItem.new
         @orders_items = OrdersItem.all
         @orders = Order.all
