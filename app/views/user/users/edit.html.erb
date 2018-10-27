@@ -34,9 +34,9 @@
           <%= f.submit :class=>"btn btn-primary" do %>
             <p class="buttonwidth">更新</p>
           <% end %>
-          <%= link_to user_user_path(@user.id), class: "btn btn-primary",method: :delete, "data-confirm" => "本当に消しますか？" do %>
-            <p class="buttonwidth">削除</p>
-          <% end %>
+          <%= link_to :user_user, class: "btn btn-primary" do %>
+      <p class="buttonwidth">退会ページへ</p>
+    <% end %>
         </div>
     </div>
   </div>
