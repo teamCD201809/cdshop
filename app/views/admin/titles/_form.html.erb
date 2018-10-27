@@ -51,45 +51,87 @@
 
 
 
-            <script>
-                // $(".test").on('click', function(){
-                //     $(".test").css("color","blue")
-                // });
-                $('.require')
+        <script>
+            $(function(){
+                // title
+                $('.require_title')
                 .on('blur', function(){
                     let error;
                     let value = $(this).val();
-                    let v = $(this);
-                    var i=0;
-                    var num = ['.require_title', '.require_price'];
-                    // if (){
-
-                    // };
-
                     if(value == "")
                     {
                         error = true;
                     }
                     if(error)
                     {
-                        switch(i)
-                        {
-                            case i=0:
-                                $(num[i]).after(
-                                  '<span style ="color:red" class = "error-info">タイトルを入力してください</span>');
-                            break;
-                            case i=1:
-                            // case :
-                                $(num[i]).after(
-                                  '<span style ="color:red" class = "error-info">数値を入力してください</span>');
-                            break;
-                        }
+                        $(this).after(
+                            '<span class = "error-info">タイトルを入力してください</span>'
+                        );
                     }
-
                 })
                 .on('click', function(){
                     $('.error-info').hide();
                 });
-            </script>
+                // price
+                $('.require_price')
+                .on('blur', function(){
+                    let error;
+                    let value = $(this).val();
+
+                    if(value.match(/^[0-9]+$/)){
+                        error = false;
+                    }else if(value == ""){
+                        error = "";
+                    }else{
+                        error = "nonumber";
+                    }
+                    switch(error){
+                        case "":
+                        $(this).after(
+                            '<span class = "error-info">値段を入力してください</span>'
+                        );
+                        break;
+                        case "nonumber":
+                        $(this).after(
+                            '<span class = "error-info">数値を入力してください</span>'
+                        );
+                        break;
+                    }
+                })
+                .on('click', function(){
+                    $('.error-info').hide();
+                });
+
+                // stock
+                $('.require_stock')
+                .on('blur', function(){
+                    let error;
+                    let value = $(this).val();
+
+                    if(value.match(/^[0-9]+$/)){
+                        error = false;
+                    }else if(value == ""){
+                        error = "";
+                    }else{
+                        error = "nonumber";
+                    }
+                    switch(error){
+                        case "":
+                        $(this).after(
+                            '<span class = "error-info">在庫数を入力してください</span>'
+                        );
+                        break;
+                        case "nonumber":
+                        $(this).after(
+                            '<span class = "error-info">数値を入力してください</span>'
+                        );
+                        break;
+                    }
+                })
+                .on('click', function(){
+                    $('.error-info').hide();
+                });
+            });
+        </script>
 
 
