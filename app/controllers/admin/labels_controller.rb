@@ -29,7 +29,7 @@ class Admin::LabelsController < ApplicationController
 
     respond_to do |format|
       if @label.save
-        format.html { redirect_to [:admin, @label], notice: 'Label was successfully created.' }
+        format.html { redirect_to [:admin, @label], notice: '登録しました。' }
         format.json { render :show, status: :created, location: [:admin, @label] }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class Admin::LabelsController < ApplicationController
   def update
     respond_to do |format|
       if @label.update(label_params)
-        format.html { redirect_to [:admin, @label], notice: 'Label was successfully updated.' }
+        format.html { redirect_to [:admin, @label], notice: '更新しました。' }
         format.json { render :show, status: :ok, location: [:admin, @label] }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class Admin::LabelsController < ApplicationController
   def destroy
     @label.destroy
     respond_to do |format|
-      format.html { redirect_to admin_labels_url, notice: 'Label was successfully destroyed.' }
+      format.html { redirect_to admin_labels_url, notice: '削除しました。' }
       format.json { head :no_content }
     end
   end
