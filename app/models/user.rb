@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   acts_as_paranoid
   has_many :cart_items, dependent: :destroy
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :delivery_addresses
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

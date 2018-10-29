@@ -5,6 +5,8 @@ class User::DeliveryAddressesController < ApplicationController
     @delivery_address.user_id = current_user.id
     if @delivery_address.save
     	redirect_to user_cart_items_path
+    else
+      redirect_to user_cart_items_path, notice: ""
     end
   end
 

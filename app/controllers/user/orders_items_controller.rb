@@ -5,6 +5,7 @@ def create
     @order = Order.new
     @order.user_id = current_user.id
 
+
     flag = params[:c][:d]
     if flag == "b"
       @order.sub_post_code = current_user.postal_code
@@ -14,9 +15,6 @@ def create
       @order.sub_post_code = a.delivery_address_postal_code
       @order.sub_address = a.delivery_address
     end
-    end
-
-    binding.pry
 
     @order.save
 
@@ -33,7 +31,6 @@ def create
       sum += orders_item.order_item_purchase
     end
       @order.update(order_purchase: sum)
-      redirect_to user_titles_path
+      redirect_to user_titles_path, notice: "購入完了しました！"
    end
-
 end

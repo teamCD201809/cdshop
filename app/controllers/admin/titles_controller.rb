@@ -1,4 +1,5 @@
 class Admin::TitlesController < ApplicationController
+	 before_action :authenticate_admin!
 
 	def new
 		@title = Title.new

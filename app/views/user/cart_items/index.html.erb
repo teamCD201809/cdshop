@@ -4,6 +4,12 @@
   <% @user = current_user %>
 
   <% if @gamen_bunki != 1 %>
+    <%# if @delivery_addresses.errors.any? %>
+    <!-- <h2><%#= pluralize(delivery_address.errors.count, "error") %> prohibited this delivery_addresses from being saved:</h2> -->
+      <%# delivery_address.errors.full_messages.each do |message| %>
+        <%#= message %>
+      <%# end %>
+    <%# end %>
 
     <div id="box">
       <% @cart_items.each do |cart_item| %>
@@ -62,13 +68,13 @@
       <div class="address-list">
         <%= form_for [:user, @orders_item] do |f| %>
           <現住所><br>
-          <%= radio_button "c", "d", "b", {} %>
+          <%= radio_button "c", "d", "b", {:checked => true} %>
           <%= current_user.postal_code %><br>
           <%= current_user.address %><br><br>
 
           <現住所以外の住所に送付する><br><br>
           <% @delivery_addresses.each do |delivery_address| %>
-            <%= radio_button "c", "d", delivery_address.id, {:checked => true} %>
+            <%= radio_button "c", "d", delivery_address.id, {} %>
             <%= delivery_address.delivery_address_postal_code %><br>
             <%= delivery_address.delivery_address %><br>
             <%= link_to "削除", user_delivery_address_path(delivery_address.id),class: "btn btn-primary", method: :delete, "data-confirm" => "この送付先を本当に消しますか？" %><br><br>

@@ -1,18 +1,19 @@
 class User::CartItemsController < ApplicationController
-
+#before_action :authenticate_user!
 	def create
     if current_user != nil
       @cart_items = CartItem.where(has_orders_items: false, user_id: current_user.id)
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.user_id = current_user.id
 
-      if @cart_item.title.stock != 0 && @cart_item.title.stock >= @cart_item.purchase_number
+      if @cart_item.title.stock > 0 && @cart_item.title.stock >= @cart_item.purchase_number
 
         if CartItem.exists?(title_id: @cart_item.title_id, user_id: current_user.id, has_orders_items: false)
           @cart_item_exist = CartItem.find_by(title_id: @cart_item.title_id, user_id: current_user.id, has_orders_items: false)
           @cart_item_exist.update(purchase_number: @cart_item_exist.purchase_number + @cart_item.purchase_number)
-          stock_after_purchase = @cart_item_exist.title.stock - @cart_item_exist.purchase_number
-          @cart_item_exist.title.update(stock: stock_after_purchase)
+          #stock_after_purchase = @cart_item_exist.title.stock - @cart_item_exist.purchase_number
+          #@cart_item_exist.title.update(stock: stock_after_purchase)
+          redirect_to user_titles_path
         else
           @cart_item.save
           redirect_to user_titles_path
@@ -23,7 +24,7 @@ class User::CartItemsController < ApplicationController
       end
 
     else
-        redirect_to new_user_session_path
+      redirect_to new_user_session_path
 	  end
   end
       #sum = 0
@@ -38,6 +39,7 @@ class User::CartItemsController < ApplicationController
 
 
     def index
+     # if current_user != nil
         @cart_items = CartItem.where(has_orders_items: false, user_id: current_user.id)
         @orders_item = OrdersItem.new
         @orders_items = OrdersItem.all
@@ -49,6 +51,9 @@ class User::CartItemsController < ApplicationController
         if @cart_items.blank?
           @gamen_bunki = 1
         end
+      #else
+      #  redirect_to new_user_session_path
+
     end
 
     def destroy
