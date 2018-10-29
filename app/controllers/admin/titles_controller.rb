@@ -9,8 +9,11 @@ class Admin::TitlesController < ApplicationController
 
 	def create
 		@title = Title.new(title_params)
-		@title.save
-		redirect_to admin_titles_path
+		if @title.save
+			redirect_to admin_titles_path
+		else
+			redirect_to new_admin_title_path, notice:'空欄があります'
+		end
 	end
 
 	def index

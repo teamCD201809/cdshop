@@ -1,0 +1,82 @@
+        <script>
+            $(function(){
+                let error;
+                let value = $(this).val();
+                function Hide(){
+                     $('.error-info').hide();
+                };
+                // title
+                $('.require_title')
+                .on('blur', function(){
+                    // let error;
+                    // let value = $(this).val();
+                    if(value == "")
+                    {
+                        error = true;
+                    }
+                    if(error)
+                    {
+                        $(this).after(
+                            '<span class = "error-info">タイトルを入力してください</span>'
+                        );
+                    }
+                })
+                .on('click', Hide);
+                // price
+                $('.require_price')
+                .on('blur', function(){
+                    // let error;
+                    // let value = $(this).val();
+
+                    if(value.match(/^[0-9]+$/)){
+                        error = false;
+                    }else if(value == ""){
+                        error = "";
+                    }else{
+                        error = "nonumber";
+                    }
+                    switch(error){
+                        case "":
+                        $(this).after(
+                            '<span class = "error-info">値段を入力してください</span>'
+                        );
+                        break;
+                        case "nonumber":
+                        $(this).after(
+                            '<span class = "error-info">数値を入力してください</span>'
+                        );
+                        break;
+                    }
+                })
+                .on('click', Hide);
+
+                // stock
+                $('.require_stock')
+                .on('blur', function(){
+                    // let error;
+                    // let value = $(this).val();
+
+                    if(value.match(/^[0-9]+$/)){
+                        error = false;
+                    }else if(value == ""){
+                        error = "";
+                    }else{
+                        error = "nonumber";
+                    }
+                    switch(error){
+                        case "":
+                        $(this).after(
+                            '<span class = "error-info">在庫数を入力してください</span>'
+                        );
+                        break;
+                        case "nonumber":
+                        $(this).after(
+                            '<span class = "error-info">数値を入力してください</span>'
+                        );
+                        break;
+                    }
+                })
+                .on('click', Hide);
+            });
+        </script>
+
