@@ -44,52 +44,59 @@
         <p class="buttonwidth">編集</p>
         <% end %>
     </div>
-  </div>
+    </div>
   </div>
 
- <div class="block">
+  <div class="block">
     <%= link_to :back, class: "btn btn-primary" do %>
       <p class="buttonwidth">戻る</p>
     <% end %>
   </div>
-   
- <div class="pass-link">
-   <%=link_to "パスワードを変更する", edit_user_registration_path %>
- </div>
 
-
-  <div class="history-area">
-    <p class="title-center">＜購入履歴＞</p>
-    
-    <% @orders.each do |order| %>
-
-    <div class="history-box">
-      <div class="history-contents">
-        <!-- コントローラで -->
-        <%#= order.orders_item.cart_item.user.id %>
-        <p class="bold">購入日時</p>
-        <%= order.created_at %><br><br>
-        <p class="bold">購入内容</p>
-        <% order.orders_items.each do |orders_item| %>
-          <%= orders_item.cart_item.title.title %>
-          <%= orders_item.order_item_purchase %>円
-          <%#= select :status,:name,OrdersItem.statuses.keys.to_a %>
-          <%= orders_item.status %>
-          <br>
-        <% end %>
-        <br>
-         <p class="bold">総計</p>
-        <%= order.order_purchase %>円<br><br>
-        <p class="bold">送付先</p>
-        <%= order.sub_post_code %><br>
-        <%= order.sub_address %>
-      </div>
-　　 </div>
-
-    <% end %>
-    <div id="pagination">
-    <%= paginate @orders, class:"pagenate" %>
-    </div>
-  
+  <div class="pass-link">
+    <%=link_to "パスワードを変更する", edit_user_registration_path %>
   </div>
+
+
+
+  <% @orders.each do |order| %>
+    <% order.orders_items.each do |orders_item| %>
+      <div class="container main user-history">
+        <div class="row" style="background-color: #EEEEEE">
+          <div class="col-lg-4">
+            <div>
+              <%= attachment_image_tag orders_item.cart_item.title, :image, :fill, 300, 300 %>
+              </div>
+          </div>
+          <div class="col-lg-2 user-history">
+            <div>
+              <p><b>タイトル:</b></p>
+              <%= orders_item.cart_item.title.title %><br><br>
+              <p><b>アーティスト名:</b></p>
+              <%= orders_item.cart_item.title.artist.artist %><br><br>
+              <p><b>購入個数</b></p>
+              <%= orders_item.cart_item.purchase_number %><br><br>
+              <p><b>購入金額:</b></p>
+              <%= orders_item.cart_item.title.price %>円<br><br>
+              <p><b>ジャンル:</b></p>
+              <%= orders_item.cart_item.title.genre.genre %><br><br>
+              <p><b>レーベル:</b></p>
+              <%= orders_item.cart_item.title.label.label %><br><br>
+              <p><b>購入日時</b></p>
+              <%= order.created_at %><br><br>
+              <p><b>配送先</b></p>
+              <%= order.sub_post_code%>&nbsp&nbsp
+              <%= order.sub_address%><br><br>
+              <p><b>配送状況</b></p>
+              <%= orders_item.status %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+
+
 </div>
