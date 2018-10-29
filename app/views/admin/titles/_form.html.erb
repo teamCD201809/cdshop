@@ -37,7 +37,7 @@
                 <%= f.fields_for :discs do |disc| %>
                     <%= render 'disc_fields', f: disc %>
                 <% end %>
-            <div id="links">
+            <div class="links">
                 <%= link_to_add_association 'discを追加', f,:discs, class: 'btn btn-primary' %>
             </div>
         </div>

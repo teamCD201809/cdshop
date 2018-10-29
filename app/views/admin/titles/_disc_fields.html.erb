@@ -11,7 +11,7 @@
     	</table>
 	</div>
 
-	<div class="songs">
+	<div id="songs">
 		<%= f.fields_for :songs do |song| %>
 	        <%= render 'song_fields', f: song %>
 	    <% end %>
