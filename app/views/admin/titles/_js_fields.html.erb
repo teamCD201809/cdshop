@@ -1,15 +1,13 @@
         <script>
             $(function(){
-                let error;
-                let value = $(this).val();
                 function Hide(){
                      $('.error-info').hide();
                 };
                 // title
                 $('.require_title')
                 .on('blur', function(){
-                    // let error;
-                    // let value = $(this).val();
+                    let error;
+                    let value = $(this).val();
                     if(value == "")
                     {
                         error = true;
@@ -25,8 +23,8 @@
                 // price
                 $('.require_price')
                 .on('blur', function(){
-                    // let error;
-                    // let value = $(this).val();
+                    let error;
+                    let value = $(this).val();
 
                     if(value.match(/^[0-9]+$/)){
                         error = false;
@@ -53,8 +51,8 @@
                 // stock
                 $('.require_stock')
                 .on('blur', function(){
-                    // let error;
-                    // let value = $(this).val();
+                    let error;
+                    let value = $(this).val();
 
                     if(value.match(/^[0-9]+$/)){
                         error = false;
