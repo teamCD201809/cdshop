@@ -2,13 +2,15 @@
   <p class="title-center">＜マイカート＞</p>
 
   <% @user = current_user %>
+
+  <% if @gamen_bunki != 1 %>
+
+    <div id="box">
       <% @cart_items.each do |cart_item| %>
         <div class="cart_items">
           <div class="cart-item-box clearfix">
             <div class="jacket-box">
               <%= attachment_image_tag cart_item.title, :image, :fill, 200, 200 %>
-
-
             </div>
 
 
@@ -31,10 +33,10 @@
                 <%= f.select :purchase_number, options_for_select(((1..a).to_a),:selected => cart_item.purchase_number) %>
                 <span>枚</span>
 
-                 <%= f.submit "枚数変更", class:"btn btn-primary" do %>
-                   <p class="buttonwidth">枚数変更</p>
-                 <% end %>
-             <% end %>
+                  <%= f.submit "枚数変更", class:"btn btn-primary" do %>
+                    <p class="buttonwidth">枚数変更</p>
+                  <% end %>
+              <% end %>
 　　　　　　　　<br>
 
               <%= link_to user_cart_item_path(cart_item.id), class: "btn btn-primary",method: :delete, "data-confirm" => "本当に消しますか？" do %>
@@ -44,93 +46,61 @@
             </div>
           </div>
         </div>
+      <% end %><!--一番上のcart_itemのeach終わり-->
+    </div>
 
-    <% end %><!--一番上のcart_itemのeach終わり-->
 
-
-
-  <div class="cart-text">
-    <p>合計金額:</p>
+    <div class="cart-text">
       <% sum = 0; %>
       <% @cart_items.each do |cart_item| %>
-      <% sum += cart_item.title.price * cart_item.purchase_number %>
+        <% sum += cart_item.title.price * cart_item.purchase_number %>
       <% end %>
+      <h2>合計金額 : <span><%= sum %> 円</span></h2>
+　　　
+      <h4><b>送付先</b></h4>
 
-　　　 <%= sum %><span> 円</span>
-
-  <p>送付先</p>
-      <%#= form_tag(user_orders_path, method: :post) do %>
-        <!-- <span><その他の配送先></span><br> -->
-        <%#= form_tag(user_orders_path, method: :post) do %>
-          <%# @delivery_addresses.each do |f| %>
-          <%#= f.radio_button :sub_post_code, d.delivery_address_postal_code %>
-            <%#= radio_button "c", "d", f.id, {} %>
-              <%#= f.delivery_address_postal_code %><br>
-              <%#= f.delivery_address %><br>
-              <%#= link_to "削除", user_delivery_address_path(f.id),class: "btn btn-primary", method: :delete, "data-confirm" => "この送付先を本当に消しますか？" %><br>
-          <%# end %>
-
-    </div>
-
-
-    <div class="address-list">
-      <span>新しい配送先入力</span><br>
-
-      <%= form_for [:user, @delivery_address] do |f| %>
-        <郵便番号><br>
-        <%= f.text_field :delivery_address_postal_code %><br>
-        <住所><br>
-        <%= f.text_field :delivery_address %>
-        <%= f.submit "配送先登録" %>
-      <% end %>
-       <!-- <input type="text" value="" class="delivery-address-input" placeholder=""> -->
-    </div>
-
-
-
-    <%= form_for [:user, @orders_item] do |f| %>
-        <%#= form_tag(user_orders_path, method: :post) %>
+      <div class="address-list">
+        <%= form_for [:user, @orders_item] do |f| %>
           <現住所><br>
-            <%= radio_button "c", "d", "b", {} %>
-            <%= current_user.postal_code %><br>
-            <%= current_user.address %><br><br>
-
+          <%= radio_button "c", "d", "b", {} %>
+          <%= current_user.postal_code %><br>
+          <%= current_user.address %><br><br>
 
           <現住所以外の住所に送付する><br><br>
-      <% @delivery_addresses.each do |delivery_address| %>
-        <%= radio_button "c", "d", delivery_address.id, {} %>
-          <%= delivery_address.delivery_address_postal_code %><br>
-          <%= delivery_address.delivery_address %><br>
-          <%= link_to "削除", user_delivery_address_path(delivery_address.id),class: "btn btn-primary", method: :delete, "data-confirm" => "この送付先を本当に消しますか？" %><br><br>
-          <%# end %>
-        <%# end %>
-      <% end %>
+          <% @delivery_addresses.each do |delivery_address| %>
+            <%= radio_button "c", "d", delivery_address.id, {:checked => true} %>
+            <%= delivery_address.delivery_address_postal_code %><br>
+            <%= delivery_address.delivery_address %><br>
+            <%= link_to "削除", user_delivery_address_path(delivery_address.id),class: "btn btn-primary", method: :delete, "data-confirm" => "この送付先を本当に消しますか？" %><br><br>
+          <% end %>
+          <br><br>
+
+          <%= f.submit "購入する", class:"btn btn-primary" %>
+          <% end %>
+          <br><br><br><br>
+
+          <span><新しい配送先登録></span><br>
+          <%= form_for [:user, @delivery_address] do |f| %>
+            <郵便番号><br>
+            <%= f.text_field :delivery_address_postal_code %><br>
+            <住所><br>
+            <%= f.text_field :delivery_address %>
+            <%= f.submit "配送先登録" %>
+          <% end %>
+      </div>
 
 
 
+    <% else %> <!--gamen_bunkiが1であったら、カートは空だと表示する-->
 
+      <h2 div class="kara">カートは空です</h2>
+      <br>
+      <div class="block">
+        <%= link_to :back, class: "btn btn-primary" do %>
+          <p class="buttonwidth">戻る</p>
+        <% end %>
+      </div>
 
-        <%# @delivery_addresses.each do |f| %>
-          <%#= f.radio_button :sub_post_code, d.delivery_address_postal_code %>
-            <%#= radio_button "c", "d", f.id, {} %>
-              <%#= f.delivery_address_postal_code %><br>
-              <%#= f.delivery_address %><br>
-              <%#= link_to "削除", user_delivery_address_path(f.id),class: "btn btn-primary", method: :delete, "data-confirm" => "この送付先を本当に消しますか？" %><br>
-        <%# end %>
-      <%# end %>
-
-      <span><%= f.submit "購入する", class:"btn btn-primary" %></span>
-            <%# submit_tag do %>
-            <%# end %>
     <% end %>
-    <%# end %>
-    
 
-     <%# end %>
-
-    <br>
-    <br>
-
-
-
-</div>
+  </div>

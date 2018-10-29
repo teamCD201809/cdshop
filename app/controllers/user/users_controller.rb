@@ -1,11 +1,21 @@
 class User::UsersController < ApplicationController
   def edit
+    if current_user == User.find(params[:id])
     @user = User.find(params[:id])
+    else
+      @titles = Title.all
+      redirect_to user_titles_path
+    end
   end
 
   def show
     @user = User.find(params[:id])
-    @orders = Order.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(5)
+    # if @user == current_user
+      @orders = Order.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(5)
+    # else
+      # @titles = Title.all
+      # redirect_to user_titles_path
+    #end
   end
 
   def update
@@ -14,7 +24,7 @@ class User::UsersController < ApplicationController
   	  redirect_to user_user_path(@user.id)
     end
   end
-  
+
 def bye
     @user = User.find(params[:id])
 end

@@ -1,21 +1,38 @@
 class Admin::UsersController < ApplicationController
 
 def index
-  @users = User.all
+  if admin_signed_in?
+    @users = User.all
+  else
+    redirect_to user_titles_path
+  end
 end
 
 def edit
-  @user = User.find(params[:id])
+  if admin_signed_in?
+    @user = User.find(params[:id])
+  else
+    redirect_to user_titles_path
+  end
 end
 
 def show
-  @user = User.find(params[:id])
+  #if admin_signed_in?
+    @user = User.find(params[:id])
+    @orders = @user.orders
+  #else
+   # redirect_to user_titles_path
+  #end
 end
 
 def update
-  @user = User.find(params[:id])
-  if @user.update(user_params)
-  	redirect_to admin_user_path(@user.id)
+  if admin_signed_in?
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+  	  redirect_to admin_user_path(@user.id)
+    end
+  else
+    redirect_to user_titles_path
   end
 end
 
