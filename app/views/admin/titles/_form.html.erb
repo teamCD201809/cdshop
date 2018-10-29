@@ -2,21 +2,18 @@
 
 <%= form_for([:admin, title]) do |f| %>
         <div class="col-lg-4">
+            <% if flash[:notice] %>
+                <p style="color: red"><%= flash[:notice]%></p>
+            <% end %>
             <p>CDジャケット:</p>
             <%= f.attachment_field :image %>
-
     		<p>タイトル:</p>
-            <!-- <span style="color:darkred">Error</span> -->
-            <!-- <div class="form-group has-error has-feedback"> -->
-                <%= f.text_field :title,type:"text", class:"form-control require_title require" %>
-<!--                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-            </div> -->
+                <%= f.text_field :title,type:"text", class:"form-control require_title" %>
             <table>
                 <tbody>
                     <tr>
                         <td><p>アーティスト名:</p></td>
                         <td><%= f.select :artist_id, @artist_select %></td>
-
                     </tr>
                     <tr>
                         <td><p>ジャンル名:</p></td>
@@ -29,9 +26,9 @@
                 </tbody>
             </table>
             <p>値段:</p>
-            <%= f.text_field :price, class:"form-control require_price require" %>
+            <%= f.text_field :price, class:"form-control require_price" %>
             <p>在庫数:</p>
-            <%= f.text_field :stock, class:"form-control require_stock require" %>
+            <%= f.text_field :stock, class:"form-control require_stock" %>
             <%= link_to "戻る", admin_titles_path, class:"btn btn-primary"%>
             <%= f.submit "登録", class:"btn btn-primary" %>
     	</div>
@@ -47,91 +44,5 @@
     </div>
 <% end %>
 
-
-
-
-
-        <script>
-            $(function(){
-                // title
-                $('.require_title')
-                .on('blur', function(){
-                    let error;
-                    let value = $(this).val();
-                    if(value == "")
-                    {
-                        error = true;
-                    }
-                    if(error)
-                    {
-                        $(this).after(
-                            '<span class = "error-info">タイトルを入力してください</span>'
-                        );
-                    }
-                })
-                .on('click', function(){
-                    $('.error-info').hide();
-                });
-                // price
-                $('.require_price')
-                .on('blur', function(){
-                    let error;
-                    let value = $(this).val();
-
-                    if(value.match(/^[0-9]+$/)){
-                        error = false;
-                    }else if(value == ""){
-                        error = "";
-                    }else{
-                        error = "nonumber";
-                    }
-                    switch(error){
-                        case "":
-                        $(this).after(
-                            '<span class = "error-info">値段を入力してください</span>'
-                        );
-                        break;
-                        case "nonumber":
-                        $(this).after(
-                            '<span class = "error-info">数値を入力してください</span>'
-                        );
-                        break;
-                    }
-                })
-                .on('click', function(){
-                    $('.error-info').hide();
-                });
-
-                // stock
-                $('.require_stock')
-                .on('blur', function(){
-                    let error;
-                    let value = $(this).val();
-
-                    if(value.match(/^[0-9]+$/)){
-                        error = false;
-                    }else if(value == ""){
-                        error = "";
-                    }else{
-                        error = "nonumber";
-                    }
-                    switch(error){
-                        case "":
-                        $(this).after(
-                            '<span class = "error-info">在庫数を入力してください</span>'
-                        );
-                        break;
-                        case "nonumber":
-                        $(this).after(
-                            '<span class = "error-info">数値を入力してください</span>'
-                        );
-                        break;
-                    }
-                })
-                .on('click', function(){
-                    $('.error-info').hide();
-                });
-            });
-        </script>
 
 

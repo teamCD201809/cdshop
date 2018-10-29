@@ -88,9 +88,9 @@ ActiveRecord::Schema.define(version: 2018_10_27_085533) do
     t.integer "disc_id"
     t.integer "song_order"
     t.string "song_title"
-    t.string "audio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "audio"
   end
 
   create_table "titles", force: :cascade do |t|
