@@ -29,7 +29,7 @@ class Admin::GenresController < ApplicationController
 
     respond_to do |format|
       if @genre.save
-        format.html { redirect_to [:admin, @genre], notice: 'Genre was successfully created.' }
+        format.html { redirect_to [:admin, @genre], notice: '登録しました。' }
         format.json { render :show, status: :created, location: [:admin, @genre] }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class Admin::GenresController < ApplicationController
   def update
     respond_to do |format|
       if @genre.update(genre_params)
-        format.html { redirect_to [:admin, @genre], notice: 'Genre was successfully updated.' }
+        format.html { redirect_to [:admin, @genre], notice: '更新しました。' }
         format.json { render :show, status: :ok, location: [:admin, @genre] }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class Admin::GenresController < ApplicationController
   def destroy
     @genre.destroy
     respond_to do |format|
-      format.html { redirect_to admin_genres_url, notice: 'Genre was successfully destroyed.' }
+      format.html { redirect_to admin_genres_url, notice: '削除しました。' }
       format.json { head :no_content }
     end
   end

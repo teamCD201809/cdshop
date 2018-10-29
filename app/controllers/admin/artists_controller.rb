@@ -29,7 +29,7 @@ class Admin::ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.save
-        format.html { redirect_to [:admin, @artist], notice: 'Artist was successfully created.' }
+        format.html { redirect_to [:admin, @artist], notice: '登録しました。' }
         format.json { render :show, status: :created, location: [:admin, @artist] }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class Admin::ArtistsController < ApplicationController
   def update
     respond_to do |format|
       if @artist.update(artist_params)
-        format.html { redirect_to [:admin, @artist], notice: 'Artist was successfully updated.' }
+        format.html { redirect_to [:admin, @artist], notice: '更新しました。' }
         format.json { render :show, status: :ok, location: [:admin, @artist] }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class Admin::ArtistsController < ApplicationController
   def destroy
     @artist.destroy
     respond_to do |format|
-      format.html { redirect_to admin_artists_url, notice: 'Artist was successfully destroyed.' }
+      format.html { redirect_to admin_artists_url, notice: '削除しました。' }
       format.json { head :no_content }
     end
   end
