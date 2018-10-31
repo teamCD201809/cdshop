@@ -1,15 +1,12 @@
+<%= stylesheet_link_tag "user/cart_items", :media => "all" %>
+<%= stylesheet_link_tag "application", :media => "all" %>
+
 <div class="main">
   <p class="title-center">＜マイカート＞</p>
 
   <% @user = current_user %>
 
   <% if @gamen_bunki != 1 %>
-    <%# if @delivery_addresses.errors.any? %>
-    <!-- <h2><%#= pluralize(delivery_address.errors.count, "error") %> prohibited this delivery_addresses from being saved:</h2> -->
-      <%# delivery_address.errors.full_messages.each do |message| %>
-        <%#= message %>
-      <%# end %>
-    <%# end %>
 
     <div id="box">
       <% @cart_items.each do |cart_item| %>
@@ -45,9 +42,8 @@
               <% end %>
 　　　　　　　　<br>
 
-              <%= link_to user_cart_item_path(cart_item.id), class: "btn btn-primary",method: :delete, "data-confirm" => "本当に消しますか？" do %>
+              <%= link_to user_cart_item_path(cart_item.id), class: "btn btn-primary", method: :delete, "data-confirm" => "本当に消しますか？" do %>
                 <p class="buttonwidth">削除</p>
-
               <% end %>
             </div>
           </div>
@@ -74,6 +70,7 @@
 
           <現住所以外の住所に送付する><br><br>
           <% @delivery_addresses.each do |delivery_address| %>
+
             <%= radio_button "c", "d", delivery_address.id, {} %>
             <%= delivery_address.delivery_address_postal_code %><br>
             <%= delivery_address.delivery_address %><br>
@@ -86,7 +83,13 @@
           <br><br><br><br>
 
           <span><新しい配送先登録></span><br>
-          <%= form_for [:user, @delivery_address] do |f| %>
+          <%= form_for @delivery_address, url: user_delivery_addresses_path do |f| %>
+             <% if @delivery_address.errors.any? %>
+               <% @delivery_address.errors.full_messages.each do |message| %>
+                 <p class="error"><%= message %></p>
+               <% end %>
+             <% end %>
+
             <郵便番号><br>
             <%= f.text_field :delivery_address_postal_code %><br>
             <住所><br>

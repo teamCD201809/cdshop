@@ -6,7 +6,13 @@ class User::DeliveryAddressesController < ApplicationController
     if @delivery_address.save
     	redirect_to user_cart_items_path
     else
-      redirect_to user_cart_items_path, notice: ""
+        @cart_items = CartItem.where(has_orders_items: false, user_id: current_user.id)
+        @orders_item = OrdersItem.new
+        @delivery_addresses = DeliveryAddress.where(user_id: current_user.id)
+        render :template => "user/cart_items/index"
+        if @cart_items.blank?
+          @gamen_bunki = 1
+        end
     end
   end
 

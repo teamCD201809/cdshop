@@ -11,8 +11,6 @@ class User::CartItemsController < ApplicationController
         if CartItem.exists?(title_id: @cart_item.title_id, user_id: current_user.id, has_orders_items: false)
           @cart_item_exist = CartItem.find_by(title_id: @cart_item.title_id, user_id: current_user.id, has_orders_items: false)
           @cart_item_exist.update(purchase_number: @cart_item_exist.purchase_number + @cart_item.purchase_number)
-          #stock_after_purchase = @cart_item_exist.title.stock - @cart_item_exist.purchase_number
-          #@cart_item_exist.title.update(stock: stock_after_purchase)
           redirect_to user_titles_path
         else
           @cart_item.save
@@ -39,27 +37,27 @@ class User::CartItemsController < ApplicationController
 
 
     def index
-     # if current_user != nil
+      if current_user != nil
         @cart_items = CartItem.where(has_orders_items: false, user_id: current_user.id)
         @orders_item = OrdersItem.new
-        @orders_items = OrdersItem.all
-        @orders = Order.all
-        @order = Order.new
         @delivery_addresses = DeliveryAddress.where(user_id: current_user)
         @delivery_address = DeliveryAddress.new
-        
+
         if @cart_items.blank?
           @gamen_bunki = 1
         end
-      #else
-      #  redirect_to new_user_session_path
-
+        else
+        redirect_to new_user_session_path
+      end
     end
 
     def destroy
+      binding.pry
       cart_item = CartItem.find(params[:id])
     	cart_item.destroy
+      binding.pry
     	redirect_to user_cart_items_path
+      binding.pry
     end
 
     def update
