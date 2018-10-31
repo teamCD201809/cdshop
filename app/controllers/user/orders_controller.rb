@@ -15,3 +15,5 @@ class User::OrdersController < ApplicationController
   end
 
 end
+
+#上記文章不使用 20181029 廣重
