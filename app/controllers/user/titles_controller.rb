@@ -1,5 +1,4 @@
 class User::TitlesController < ApplicationController
-#before_action :authenticate_user!
 
 	def index
 		@titles = Title.joins(:artist).search(params[:search]).page(params[:page])

@@ -2,8 +2,8 @@
 #   config.fog_provider = 'fog/aws'
 #   config.fog_credentials = {
 #     provider: 'AWS',
-#     aws_access_key_id: #'ここにアクセスキー',
-#     aws_secret_access_key: #'ここにプライベートキー',
+#     aws_access_key_id: '',
+#     aws_secret_access_key: '',
 #     region: 'ap-northeast-1'
 #   }
 
