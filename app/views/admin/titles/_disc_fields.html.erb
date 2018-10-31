@@ -11,11 +11,11 @@
     	</table>
 	</div>
 
-	<div class="songs">
+	<div>
 		<%= f.fields_for :songs do |song| %>
 	        <%= render 'song_fields', f: song %>
 	    <% end %>
-	    <div class="links">
+	    <div>
 	    	<%= link_to_add_association 'songを追加', f,:songs, class: 'btn btn-primary' %>
 	    </div>
     </div>
