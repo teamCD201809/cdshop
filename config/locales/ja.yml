@@ -27,3 +27,6 @@ ja:
         artist: アーティスト
       genre:
         genre: ジャンル
+      delivery_address:
+        delivery_address_postal_code: 郵便番号
+        delivery_address: 住所
