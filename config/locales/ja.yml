@@ -1,0 +1,29 @@
+ja:
+  activerecord:
+    # modelsの中に名前を変えたいmodelを入れる
+    models:
+      user: ユーザー
+      admin: アドミン
+      # 以下にmodelを入力し、その中に訳したい単語を入力
+    attributes:
+      user:
+        name: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+        address: 住所
+        name_kana: 名前カナ
+        postal_code: 郵便番号
+        tel_number: 電話番号
+        password_confirmation: パスワード(確認用)
+        current_password: 現在のパスワード
+        remember_me: 保存する
+      admin:
+        email: メールアドレス
+        password: パスワード
+        remember_me: 保存する
+      label:
+        label: レーベル
+      artist:
+        artist: アーティスト
+      genre:
+        genre: ジャンル

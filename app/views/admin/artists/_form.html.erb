@@ -1,7 +1,7 @@
 <%= form_for([:admin, @artist]) do |form| %>
   <% if artist.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
+      <h2><%= pluralize(artist.errors.count, "") %> 件のエラーが発生したためジャンルは保存されませんでした。</h2>
 
       <ul>
       <% artist.errors.full_messages.each do |message| %>
