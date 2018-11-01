@@ -3,6 +3,11 @@
   	<div class="input-area">
 
       <%= form_for @user, url: admin_user_path do |f| %>
+        <% if @user.errors.any? %>
+               <% @user.errors.full_messages.each do |message| %>
+                 <p class="error"><%= message %></p>
+               <% end %>
+        <% end %>
 
 
         <div class="user-account-columns">
