@@ -15,9 +15,9 @@
       <% @labels.each do |label| %>
         <tr>
           <td><%= label.label %></td>
-          <td><%= link_to '編集', edit_admin_label_path(label), class: "btn btn-success" %></td>
+          <td><%= link_to '編集', edit_admin_label_path(label), class: "btn btn-primary" %></td>
           <td>|</td>
-          <td><%= link_to '削除', [:admin, label],class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to '削除', [:admin, label],class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
