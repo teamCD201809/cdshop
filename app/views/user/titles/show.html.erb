@@ -61,7 +61,7 @@
                         <td><%= song.song_title %></td>
                         <td>
                             <% if song.audio.present?  %>
-                            <%#= audio_tag song.audio, autoplay: false, controls: true %>
+                            <%= audio_tag song.audio, autoplay: false, controls: true %>
                             <% end %>
                         </td>
                     </tr>
